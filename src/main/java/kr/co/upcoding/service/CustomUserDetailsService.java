@@ -24,11 +24,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         UserVO user=userRepository.findByUsernameOrEmail(s);
-                if(user ==null){
-                    throw new UsernameNotFoundException("User not found with username or email : "+s);
-                }
+        if(user ==null){
+            throw new UsernameNotFoundException("User not found with username or email : "+s);
+        }
 
-            user = userRepository.findByIdJoin(user.getId());
+        user = userRepository.findByIdJoin(user.getUser_id());
         return UserPrincipal.create(user);
     }
 

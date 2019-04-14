@@ -4,14 +4,14 @@ import lombok.Data;
 
 @Data
 public class RoleVO {
-    Long id;
-    RoleName name;
+    Long role_id;
+    RoleName role_name;
 
     public RoleVO() {
 
     }
 
     public RoleVO(RoleName name){
-        this.name = name;
+        this.role_name = name;
     }
 }

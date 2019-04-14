@@ -3,12 +3,14 @@ package kr.co.upcoding.mapper;
 import kr.co.upcoding.vo.RoleVO;
 import kr.co.upcoding.vo.UserVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
 @Mapper
+@Repository
 public interface UserMapper {
     UserVO findByEmail(String email);
     UserVO findByUsernameOrEmail(String usernameOrEmail);

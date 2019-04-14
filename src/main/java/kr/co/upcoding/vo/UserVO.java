@@ -8,29 +8,29 @@ import java.util.Set;
 
 @Data
 public class UserVO {
-    Long id;
-    String username;
-    String email;
-    String password;
-    List<RoleVO> roles;
-    String usernameOrEmail;
-    boolean isAccountNonExpired;
-    boolean isAccountNonLocked;
-    boolean isCredentialsNonExpired;
-    boolean isEnabled;
+    Long user_id;
+    String user_username;
+    String user_email;
+    String user_password;
+    List<RoleVO> user_roles;
+    String user_usernameOrEmail;
+    boolean user_isAccountNonExpired;
+    boolean user_isAccountNonLocked;
+    boolean user_isCredentialsNonExpired;
+    boolean user_isEnabled;
 
     public UserVO(){
 
     }
 
     public UserVO(String username, String email, String password, boolean isAccountNonExpired
-        , boolean isAccountNonLocked, boolean isCredentialsNonExpired, boolean isEnabled){
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.isAccountNonExpired = isAccountNonExpired;
-        this.isAccountNonLocked = isAccountNonLocked;
-        this.isCredentialsNonExpired = isCredentialsNonExpired;
-        this.isEnabled = isEnabled;
+            , boolean isAccountNonLocked, boolean isCredentialsNonExpired, boolean isEnabled){
+        this.user_username = username;
+        this.user_email = email;
+        this.user_password = password;
+        this.user_isAccountNonExpired = isAccountNonExpired;
+        this.user_isAccountNonLocked = isAccountNonLocked;
+        this.user_isCredentialsNonExpired = isCredentialsNonExpired;
+        this.user_isEnabled = isEnabled;
     }
 }

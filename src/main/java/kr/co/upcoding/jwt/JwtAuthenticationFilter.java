@@ -1,6 +1,8 @@
 package kr.co.upcoding.jwt;
 
+import kr.co.upcoding.mapper.UserMapper;
 import kr.co.upcoding.service.CustomUserDetailsService;
+import kr.co.upcoding.vo.UserVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
@@ -24,6 +27,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
+
+    @Autowired
+    private UserMapper userRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
 
@@ -41,6 +47,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+
+                UserVO user = userRepository.findByIdJoin(userRepository.findByUsername(userDetails.getUsername()).getUser_id());
+
+                String roles = user.getUser_roles().stream().map(roleVO ->
+                        "/"+roleVO.getRole_name().name()
+                ).collect(Collectors.joining());
+
+                final Cookie cookieForUserData = new Cookie("user", user.getUser_username()+roles);
+                cookieForUserData.setPath("/");
+                cookieForUserData.setSecure(false);
+                cookieForUserData.setHttpOnly(false);
+                cookieForUserData.setMaxAge(10000);
+                response.addCookie(cookieForUserData);
             }
         } catch (Exception ex) {
             logger.error("Colud not set user authentication in security context", ex);
