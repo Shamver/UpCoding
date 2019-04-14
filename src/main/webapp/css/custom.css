@@ -1,2 +1,5 @@
 .main { font-size: 24px; border-bottom: solid 1px black; }
 .page1 { font-size: 14px; background-color: yellow; }
+
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+

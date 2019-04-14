@@ -2,74 +2,71 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.upcoding.mapper.UserMapper">
-
-
-
     <select id="findByEmail" parameterType="String" resultType="UserVO">
-        SELECT * FROM jwt_user where email= #{email}
+        SELECT * FROM jwt_user where user_email= #{email}
     </select>
 
     <resultMap id="RoleVO" type="RoleVO">
-        <result column="id" property="id"/>
-        <result column="rolename" property="name"/>
+        <result column="role_id" property="role_id"/>
+        <result column="role_rolename" property="role_name"/>
     </resultMap>
 
     <resultMap id="UserVO" type="UserVO">
-        <result column="id" property="id"/>
-        <result column="username" property="username"/>
-        <result column="email" property="email"/>
-        <result column="password" property="password"/>
-        <result column="isAccountNonExpired" property="isAccountNonExpired"/>
-        <result column="isAccountNonLocked" property="isAccountNonLocked"/>
-        <result column="isCredentialsNonExpired" property="isCredentialsNonExpired" />
-        <result column="isEnabled" property="isEnabled"/>
-        <collection property="roles" resultMap="RoleVO"/>
+        <result column="user_id" property="user_id"/>
+        <result column="user_username" property="user_username"/>
+        <result column="user_email" property="user_email"/>
+        <result column="user_password" property="user_password"/>
+        <result column="user_isAccountNonExpired" property="user_isAccountNonExpired"/>
+        <result column="user_isAccountNonLocked" property="user_isAccountNonLocked"/>
+        <result column="user_isCredentialsNonExpired" property="user_isCredentialsNonExpired" />
+        <result column="user_isEnabled" property="user_isEnabled"/>
+        <collection property="user_roles" resultMap="RoleVO"/>
     </resultMap>
 
     <select id="findByUsernameOrEmail" parameterType="String" resultType="UserVO">
-        SELECT * from jwt_user where username=#{usernameOrEmail} or email=#{usernameOrEmail}
+        SELECT * from jwt_user where user_username=#{usernameOrEmail} or user_email=#{usernameOrEmail}
     </select>
 
     <select id="findByIdJoin" parameterType="Long" resultMap="UserVO">
-        SELECT u.id, u.username, u.email, u.password, u.isAccountNonExpired,
-         u.isAccountNonLocked, u.isCredentialsNonExpired, u.isEnabled,
-         r.id, r.rolename from jwt_user u
+        SELECT u.user_id, u.user_username, u.user_email, u.user_password, u.user_isAccountNonExpired,
+         u.user_isAccountNonLocked, u.user_isCredentialsNonExpired, u.user_isEnabled,
+         r.role_id, r.role_rolename from jwt_user u
           JOIN jwt_role r
-            ON u.id = r.id
-          WHERE u.id = #{id}
+            ON u.user_id = r.role_id
+          WHERE u.user_id = #{id}
     </select>
 
     <select id="findById" parameterType="Long" resultType="UserVO">
-        SELECT * FROM jwt_user where id=#{id}
+        SELECT * FROM jwt_user where user_id=#{id}
     </select>
 
     <select id="findByIdIn" parameterType="Long" resultType="UserVO">
-        SELECT * from jwt_user where id=#{id}
+        SELECT * from jwt_user where user_id=#{id}
     </select>
 
     <select id="findByUsername" parameterType="String" resultType="UserVO">
-        SELECT * from jwt_user where username=#{username}
+        SELECT * from jwt_user where user_username=#{username}
     </select>
 
     <select id="existsByUsername" parameterType="String" resultType="UserVO">
-        SELECT * from jwt_user where username=#{username}
+        SELECT * from jwt_user where user_username=#{username}
     </select>
 
     <select id="existsByEmail" parameterType="String" resultType="UserVO">
-        SELECT * from jwt_user where email=#{email}
+        SELECT * from jwt_user where user_email=#{email}
     </select>
 
     <insert id="saveUser" parameterType="UserVO">
-        INSERT into jwt_user values(jwt_id.NEXTVAL, '${username}', '${email}', '${password}', '${isAccountNonExpired}',
-        '${isAccountNonLocked}', '${isCredentialsNonExpired}', '${isEnabled}')
+        INSERT into jwt_user values(jwt_id.NEXTVAL, '${user_username}', '${user_email}', '${user_password}', '${user_isAccountNonExpired}',
+        '${user_isAccountNonLocked}', '${user_isCredentialsNonExpired}', '${user_isEnabled}')
     </insert>
 
     <insert id="saveRole" parameterType="java.util.List">
         INSERT ALL
         <foreach collection="list" item="item" separator="|">
-            INTO jwt_role (ID, ROLENAME) values(
+            INTO jwt_role (ROLE_ID, ROLE_ROLENAME) values(
             jwt_id.currval,
-            #{item.name}
+            #{item.role_name}
             )
         </foreach>
         SELECT * FROM DUAL

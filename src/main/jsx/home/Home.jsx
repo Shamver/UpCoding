@@ -10,7 +10,7 @@ class Home extends React.Component {
         return (
             <React.Fragment>
                 <div>
-                    <h1>홈</h1>
+
                 </div>
             </React.Fragment>
         );
