@@ -41,6 +41,8 @@ class Navbar extends React.Component {
                 selectedSidebar={selectedSidebar}
                 onSelectCollapse={this.props.onSelectCollapse}
                 onSelectSidebar={this.props.onSelectSidebar}
+                isToggleSidebar={this.props.isToggleSidebar}
+                NavbarStyled={this.props.NavbarStyled}
                 key={i}/>);
         });
 

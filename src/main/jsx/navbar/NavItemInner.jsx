@@ -20,6 +20,8 @@ const ListGroupItem = styled(rs.ListGroupItem)`
     outline: none;
     box-shadow: none;
     height: 42px;
+    
+    
     &.active {
         background: none !important;
         color: white !important;
@@ -69,6 +71,7 @@ class NavItemInner extends React.Component {
         return (
             <React.Fragment>
                 <ListGroupItem
+                    toggled={this.props.isToggleSidebar.toString()}
                     tag={"button"}
                     active={isOpen}
                     style={{outline: 'none', boxShadow: 'none'}}

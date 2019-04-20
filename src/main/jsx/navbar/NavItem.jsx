@@ -55,13 +55,22 @@ const CollapseButton = styled(rs.Button)`
     
 `;
 
+// const TextSpan = styled.span`
+//     visibility: ${props => props.toggled ? "hidden" : "visible" }
+//     opacity: ${props => props.toggled ? 0 : 100}
+//     transition: ${props => props.toggled ? "all 0.1s" : "all 0.3s"}
+//     transition-delay: ${props => props.toggled ? "0" : "0.1s"}
+// `
+import TextSpan from '../../resources/style/TextSpan.js';
+
 const LeftIconSpan = styled.span`
     display: inline-block;
     height: 20px;
-    width: 24px;
+    width: ${props => props.toggled ? "36px" : "24px"};
     line-height: 25px;
     text-align: center;
     position: relative;
+    transition: all 0.3s;
     left: 0;
     font-size: 18px;
     margin-right: 14px;
@@ -71,16 +80,20 @@ const LeftIcon = styled(FontAwesomeIcon)`
     padding-top: 1px;
 `
 
-const RightIconSpan = styled.span`
-    height: 20px;
-    width: 24px;
-    line-height: 25px;
-    position: absolute;
-    right: 10px;
-    font-size: 17px;
-    
-    
-`
+// const RightIconSpan = styled.span`
+//     height: 20px;
+//     width: 24px;
+//     line-height: 25px;
+//     position: absolute;
+//     right: 10px;
+//     font-size: 17px;
+//     visibility: ${props => props.toggled ? "hidden" : "visible"}
+//     opacity: ${props => props.toggled ? 0 : 100}
+//     transition: ${props => props.toggled ? "all 0.1s" : "all 0.3s"}
+//     transition-delay: ${props => props.toggled ? "0" : "0.1s"}
+//
+// `
+import RightIconSpan from '../../resources/style/RightIconSpan.js';
 
 const RightIcon = styled(FontAwesomeIcon)`
     transition: all 1s;
@@ -97,16 +110,22 @@ const RightIcon = styled(FontAwesomeIcon)`
 `
 
 
-const Collapse = styled(rs.Collapse)`
-    margin: 0;
-`;
+// const Collapse = styled(rs.Collapse)`
+//     margin: 0;
+//     visibility: ${props => props.toggled ? "hidden" : "visible" }
+//     opacity: ${props => props.toggled ? 0 : 100}
+//     transition: ${props => props.toggled ? "all 0.1s" : "all 0.3s"}
+//     transition-delay: ${props => props.toggled ? "0" : "0.1s"}
+// `;
+import Collapse from '../../resources/style/Collapse.js';
 
-
-const ListGroup = styled(rs.ListGroup)`
-    padding-left: 50px;
-    text-align: left !important;
-    background-color: #192532;
-`;
+// const ListGroup = styled(rs.ListGroup)`
+//     padding-left: 50px;
+//     text-align: left !important;
+//     background-color: #192532;
+//
+// `;
+import ListGroup from '../../resources/style/ListGroup.js';
 
 
 class NavItem extends React.Component {
@@ -122,7 +141,7 @@ class NavItem extends React.Component {
     }
 
     render() {
-        const {title, items, selectedCollapse, selectedSidebar} = this.props;
+        const {title, items, selectedCollapse, selectedSidebar, isToggleSidebar} = this.props;
 
         let isOpen = null;
 
@@ -138,6 +157,7 @@ class NavItem extends React.Component {
                 to={data.to}
                 onSelectSidebar={this.props.onSelectSidebar}
                 selectedSidebar={selectedSidebar}
+                isToggleSidebar={this.props.isToggleSidebar}
                 key={i}/>);
         });
 
@@ -149,17 +169,21 @@ class NavItem extends React.Component {
                 disabled={false}
                 active={isOpen}
             >
-                <LeftIconSpan><LeftIcon icon={this.props.icon}/></LeftIconSpan>
-                <span>{title}</span>
-                <RightIconSpan><RightIcon icon={fa.faChevronRight}/></RightIconSpan>
+                <LeftIconSpan
+                    toggled={isToggleSidebar.toString()}
+                >
+                    <LeftIcon icon={this.props.icon}/>
+                </LeftIconSpan>
+                    <TextSpan toggled={isToggleSidebar.toString()}>{title}</TextSpan>
+                    <RightIconSpan toggled={isToggleSidebar.toString()}><RightIcon icon={fa.faChevronRight}/></RightIconSpan>
             </CollapseButton>);
 
         return (
             <React.Fragment>
                 <SideItemCol xs={12}>
                     {CollapseButtonRtn}
-                    <Collapse isOpen={isOpen}>
-                        <ListGroup>
+                    <Collapse isOpen={isOpen} toggled={isToggleSidebar.toString()}>
+                        <ListGroup toggled={isToggleSidebar.toString()}>
                             {item}
                         </ListGroup>
                     </Collapse>

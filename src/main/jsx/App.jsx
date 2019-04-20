@@ -11,6 +11,12 @@ import Error from './auth/Error.jsx';
 import Navbar from './navbar/Navbar.jsx';
 
 import styled from 'styled-components';
+import * as rs from 'reactstrap';
+
+import RightIconSpan from '../resources/style/RightIconSpan.js';
+import TextSpan from '../resources/style/TextSpan.js';
+import Collapse from '../resources/style/Collapse.js';
+import ListGroup from '../resources/style/ListGroup.js';
 
 const Header = styled.div`
     position: fixed;
@@ -23,16 +29,48 @@ const NavbarStyled = styled.div`
     position: fixed !important;
     left: 0 !important;
     top : 65px !important;
-    width: 250px;
+    transition: all 0.3s;
+    width: ${props => props.toggled == "true" ? "70px" : "250px"};
+    &:hover {
+        width: 250px;
+    }
+    &:hover ${RightIconSpan} {
+        visibility: visible;
+        opacity: 100;
+        transition: all 0.1s;
+        transition-delay: 0.1s;
+    }
+    &:hover ${TextSpan} {
+        visibility: visible;
+        opacity: 100;
+        transition: all 0.1s;
+        transition-delay: 0.1s;
+    }
+    &:hover ${ListGroup} {
+        visibility: visible;
+        opacity: 100;
+        max-height: none;
+        transition: visibility opacity max-height 0.2s;
+        transition-delay: 0.1s;
+    }
+    
     height: 100%;
     background-color: #1a2942;
+`
+
+const MainComponent = styled(rs.Container)`
+    padding-top: 80px;
+    padding-left: ${props => props.toggled == "true" ? "70px" : "250px"} !important;
+    padding-bottom: 10px;
+    transition: all 0.3s;
 `
 
 class App extends React.Component {
 
     state = {
         selectedCollapse: '',
-        selectedSidebar: ''
+        selectedSidebar: '',
+        isToggleSidebar: false
     }
 
     onSelectCollapse = (data) => {
@@ -59,12 +97,26 @@ class App extends React.Component {
         }
     }
 
+    onToggleSidebar = () => {
+
+        this.setState({
+            isToggleSidebar: !this.state.isToggleSidebar
+        })
+    }
+
     render() {
+        let toggled = false;
+        if(this.state.isToggleSidebar){
+            toggled = true;
+        }
+
         return (
             <React.Fragment>
                 <Route component={Header}/>
 
-                <NavbarStyled>
+                <NavbarStyled
+                    toggled={toggled.toString()}
+                >
                     <Navbar
                         menus={[
                             {
@@ -144,9 +196,15 @@ class App extends React.Component {
                         selectedSidebar={this.state.selectedSidebar}
                         onSelectCollapse={this.onSelectCollapse}
                         onSelectSidebar={this.onSelectSidebar}
+                        onToggleSidebar={this.onToggleSidebar}
+                        isToggleSidebar={this.state.isToggleSidebar}
                     />
                 </NavbarStyled>
-
+                <MainComponent
+                    toggled={toggled.toString()}
+                >
+                    <rs.Button onClick={this.onToggleSidebar}>rrrrr</rs.Button>
+                </MainComponent>
 
                 {/*<Route path={"/"} exact component={Home}/>*/}
                 {/*<Route path={"/login"} component={Login}/>*/}
