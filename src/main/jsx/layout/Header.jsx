@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../../webapp/img/shamver_upcoding.png'
-import avatar from '../../webapp/img/avatar.jpg'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as fa from '@fortawesome/free-solid-svg-icons'
+import logo from '../../webapp/img/shamver_upcoding.png';
+import avatar from '../../webapp/img/avatar.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as fa from '@fortawesome/free-solid-svg-icons';
+import Message from './dropdown/Message.jsx';
+import Notification from "./dropdown/Notification.jsx";
+import Profile from "./dropdown/Profile.jsx";
 
 const LogoImage = styled.img`
     width : 40px;
@@ -111,20 +114,27 @@ const SearchBox = styled.input`
     font-size: 14px;
     width: 250px;
     border-radius: 30px;
-    transition : all 0.3s;
-    
+    transition : all 0.3s; 
     &:focus {
         border-color: #e22a6f;
     }
 `;
 
-const Profile = styled.img`
-    width : 37px;
-    border-radius : 50%;
-    cursor : pointer;
-`;
 
 class Header extends React.Component {
+
+    onToggleDropDownMessage = () => {
+        this.props.onToggleDropDown('Message');
+    };
+
+    onToggleDropDownNoti = () => {
+        this.props.onToggleDropDown('Notification');
+    };
+
+    onToggleDropDownProfile = () => {
+        this.props.onToggleDropDown('Profile');
+    };
+
     render() {
         return (
             <Section_Header>
@@ -146,21 +156,17 @@ class Header extends React.Component {
                     </SearchBoxList>
                     <List>
                         <CollapseButton>
-                            <MenuCircle>
-                                <MenuIcon icon={fa.faEnvelope} />
-                            </MenuCircle>
+                            <Message toggle={this.onToggleDropDownMessage} toggleYN={this.props.messageToggle}/>
                         </CollapseButton>
                     </List>
                     <List>
                         <CollapseButton>
-                            <MenuCircle>
-                                <MenuIcon icon={fa.faBell} />
-                            </MenuCircle>
+                            <Notification toggle={this.onToggleDropDownNoti} toggleYN={this.props.notiToggle}/>
                         </CollapseButton>
                     </List>
                     <List>
                         <CollapseButton>
-                            <Profile src={avatar}/>
+                            <Profile toggle={this.onToggleDropDownProfile} toggleYN={this.props.profileToggle}/>
                         </CollapseButton>
                     </List>
                 </LeftNav>
