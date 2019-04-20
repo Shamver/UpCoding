@@ -30,7 +30,7 @@ const NavbarStyled = styled.div`
     left: 0 !important;
     top : 65px !important;
     transition: all 0.3s;
-    width: ${props => props.toggled == "true" ? "70px" : "250px"};
+    width: ${props => props.toggled == "true" ? "64px" : "250px"};
     &:hover {
         width: 250px;
     }
