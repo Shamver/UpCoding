@@ -15,6 +15,10 @@ class App extends React.Component {
         }
     };
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("업뎃됨");
+    }
+
     onToggleDropDown = (comp) => {
         const dropDownToggle = this.state.dropDownToggle;
 
@@ -29,6 +33,7 @@ class App extends React.Component {
             else
                 dropDownToggle[key] = false;
         }
+
         this.setState({
             dropDownToggle : dropDownToggle
         })
@@ -36,8 +41,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <React.Fragment>
-                <Route path={"/"} exact component={Header}/>
+            <div>
                 <Route
                     exact path="/"
                     render={({location, history}) => (
@@ -51,7 +55,7 @@ class App extends React.Component {
                 <Switch>
                     <Route path={"/errorpage/:errorMessage/:errorCode"} component={Error}/>
                 </Switch>
-            </React.Fragment>
+            </div>
         );
     }
 }

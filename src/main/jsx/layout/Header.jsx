@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../../webapp/img/shamver_upcoding.png';
-import avatar from '../../webapp/img/avatar.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as fa from '@fortawesome/free-solid-svg-icons';
 import Message from './dropdown/Message.jsx';
@@ -26,6 +25,8 @@ const LogoText = styled.h2`
     font-weight : bold;
     line-height : 60px;
     cursor : pointer;
+    font-family : 'cabin' ,sans-serif;
+    letter-spacing: normal;
 `;
 
 const AllLogoWrapper = styled.div`
@@ -40,7 +41,6 @@ const Section_Header = styled.div`
     background : #FFFFFF;
     height : 65px;
     border-bottom: 1px solid #E9EAEC;
-    font-family : consolas;
     color : #8A8A8A;
 `;
 

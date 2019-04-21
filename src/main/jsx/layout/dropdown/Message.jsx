@@ -1,11 +1,19 @@
 import React from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Badge } from 'reactstrap';
 import styled from 'styled-components';
 import * as fa from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import avatar from '../../../webapp/img/avatar-1.jpg'
+import avatar2 from '../../../webapp/img/avatar-2.jpg'
+import avatar3 from '../../../webapp/img/avatar-3.jpg'
+
 
 const DropdownMenuAni = styled(DropdownMenu)`
-    margin-top : 18px;
+    margin-top : 10px;
+    width : 300px;
+    height : 324px;
+    border : 0;
+    box-shadow : 0 2px 5px rgba(0, 0, 0, 0.2);
     &.show {
         transition : all 0.5s;
     }
@@ -19,6 +27,7 @@ const MenuCircle = styled.span`
     padding : 8px;
     transition : all 0.3s;
     cursor : pointer;
+    line-height : 2.5;
     
     &:hover {
         text-decoration: none;
@@ -59,6 +68,98 @@ const DropdownToggleCustom  = styled(DropdownToggle)`
     }
 `;
 
+const BadgeH5 = styled.h5`
+    display : inline;
+    float : right;
+`;
+
+const BadgeA = styled(Badge)`
+    padding : 5px 10px;
+    font-size : 12px;
+    background-color: #03A9F4 !important;
+`;
+
+const Colorh6 = styled.div`
+    line-height : 1.5;
+    color : #515365;
+    font-size : 17px !important;
+`;
+
+const DropdownItemHeader = styled(DropdownItem)`
+    padding : 10px 20px;
+    font-weight : 400;
+    cursor : unset !important;
+    
+    &:active {
+        background-color : unset;
+    }
+    
+    &:focus {
+        outline : unset;
+    }
+`;
+
+const DropDownItemCustom = styled(DropdownItem)`
+    padding : 10px 20px;
+    
+    &:active {
+        background-color : unset;
+    }
+    
+    &:focus {
+        outline : unset;
+    }
+`;
+
+const Name = styled.span`
+    display: block;
+    color: #515365;
+    line-height: 1.5;
+    font-size : 14px;
+`;
+
+const SubMessage = styled.span`
+    display: block;
+    font-size: 12.5px;
+    color: #adadad;
+    color: rgba(138, 138, 138, 0.7);
+    max-width: 90%;
+    line-height: 1.5;
+    white-space : normal
+`;
+
+const FooterMessage = styled.span`
+    display: block;
+    font-size: 14px;
+    text-align : center;
+    line-height: 1.5;
+    color: #8A8A8A
+
+`;
+
+const Info = styled.div`
+    padding-left: 55px;
+    min-height: 40px;
+    height: auto;
+    position: relative;
+`;
+
+const ImgDiv = styled.div`
+    position: relative;
+    float: left;
+    line-height: 1.5;
+`;
+
+const Img = styled.img`
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    font-size: 17px;
+    border-radius: 50px;
+    color: #ffffff;
+`;
+
 class Message extends React.Component {
 
     render() {
@@ -70,13 +171,45 @@ class Message extends React.Component {
                     </MenuCircle>
                 </DropdownToggleCustom>
                 <DropdownMenuAni right={true}>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem>Some Action</DropdownItem>
-                    <DropdownItem disabled>Action (disabled)</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Foo Action</DropdownItem>
-                    <DropdownItem>Bar Action</DropdownItem>
-                    <DropdownItem>Quo Action</DropdownItem>
+                    <DropdownItemHeader>
+                        <Colorh6>Messages  <BadgeH5><BadgeA>745</BadgeA></BadgeH5> </Colorh6>
+                    </DropdownItemHeader>
+                    <DropDownItemCustom>
+                        <ImgDiv className="media-img">
+                            <Img src={avatar} alt=""/>
+                        </ImgDiv>
+                        <Info>
+                            <Name>
+                                Amanda Robertson
+                            </Name>
+                            <SubMessage>Dummy text of the printing and typesetting industry.</SubMessage>
+                        </Info>
+                    </DropDownItemCustom>
+                    <DropDownItemCustom>
+                        <ImgDiv className="media-img">
+                            <Img src={avatar2} alt=""/>
+                        </ImgDiv>
+                        <Info>
+                            <Name>
+                                Danny Donovan
+                            </Name>
+                            <SubMessage>It is a long established fact that a reader will</SubMessage>
+                        </Info>
+                    </DropDownItemCustom>
+                    <DropDownItemCustom>
+                        <ImgDiv className="media-img">
+                            <Img src={avatar3} alt=""/>
+                        </ImgDiv>
+                        <Info>
+                            <Name>
+                                Frank Handrics
+                            </Name>
+                            <SubMessage>You have 87 unread messages</SubMessage>
+                        </Info>
+                    </DropDownItemCustom>
+                    <DropDownItemCustom>
+                        <FooterMessage>View All</FooterMessage>
+                    </DropDownItemCustom>
                 </DropdownMenuAni>
             </DropdownInline>
         );

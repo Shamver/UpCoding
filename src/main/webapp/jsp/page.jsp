@@ -3,7 +3,14 @@
 <!doctype html>
 <html>
 <head>
-    <title>${pageName}</title>
+    <title>UpCoding</title>
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif !important;
+        }
+    </style>
 </head>
  
 <body>
