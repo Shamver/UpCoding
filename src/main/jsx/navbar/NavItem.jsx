@@ -12,12 +12,21 @@ import NavItemInner from './NavItemInner.jsx';
 
 // sideItem
 
-const SideItemCol = styled(rs.Col)`
-    color: white;
-    text-align: center;
-    text-vertical: middle;
-    padding: 0;
-`;
+// const SideItemCol = styled(rs.Col)`
+//     color: white;
+//     text-align: center;
+//     text-vertical: middle;
+//     padding: 0;
+//
+//     ${({xs}) => (xs ? "opacity: 0" : "opacity: 0")}
+//
+//     @media only screen and (min-width: 1200px) {
+//         transition: opacity 0.2s;
+//         transition-delay: 0.05s;
+//         opacity: 100;
+//     }
+// `;
+import SideItemCol from '../../resources/style/SideItemCol.js';
 
 const CollapseButton = styled(rs.Button)`
     width: 100%;
@@ -66,13 +75,14 @@ import TextSpan from '../../resources/style/TextSpan.js';
 const LeftIconSpan = styled.span`
     display: inline-block;
     height: 20px;
-    width: ${props => props.toggled ? "36px" : "24px"};
+    width: ${props => props.toggled == "true" ? "35px" : "24px"};
     line-height: 25px;
     text-align: center;
     position: relative;
     transition: all 0.3s;
     left: 0;
     font-size: 18px;
+    padding-right: ${props => props.toggled == "true" ? "2px" : "0"};
     margin-right: 14px;
 `
 
@@ -180,7 +190,7 @@ class NavItem extends React.Component {
 
         return (
             <React.Fragment>
-                <SideItemCol xs={12}>
+                <SideItemCol toggled={isToggleSidebar.toString()} xs={12}>
                     {CollapseButtonRtn}
                     <Collapse isOpen={isOpen} toggled={isToggleSidebar.toString()}>
                         <ListGroup toggled={isToggleSidebar.toString()}>
