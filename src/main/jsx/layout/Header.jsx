@@ -33,6 +33,9 @@ const AllLogoWrapper = styled.div`
     float : left;
     display : flex;
     width : 270px;
+    @media (max-width: 992px) {
+        display : none;
+    }
 `;
 
 const Section_Header = styled.div`
@@ -84,7 +87,6 @@ const SearchIcon = styled(FontAwesomeIcon)`
 `;
 
 const LeftNav = styled.ul`
-    width : 418px;
     float : right;
     position : relative;
     margin-right : 30px;
@@ -102,6 +104,9 @@ const List = styled.li`
 const SearchBoxList = styled(List)`
     margin-right : 20px;
     position : relative;
+    @media (max-width: 767px) {
+        display : none;
+    }
 `
 
 const SearchBox = styled.input`
@@ -146,7 +151,7 @@ class Header extends React.Component {
                 </AllLogoWrapper>
                 <CollapseButton>
                     <MenuCircle>
-                        <MenuIcon icon={fa.faBars} />
+                        <MenuIcon icon={fa.faArrowLeft} />
                     </MenuCircle>
                 </CollapseButton>
                 <LeftNav>

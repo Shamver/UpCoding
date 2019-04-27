@@ -11,23 +11,12 @@ const DropdownMenuAni = styled(DropdownMenu)`
     margin-top : 10px;
     position : absolute;
     border : 0;
-    left : unset !important;
-    right: 0 !important;
-    width : 0px;
-    height : 0px;
-    top: 10px !important;
-    padding: 0px !important;
+    width : 300px;
+    height : 360px;
+    transition : all 0.3s !important;
     box-shadow : 0 2px 5px rgba(0, 0, 0, 0.2);
-    transform : none !important;
-    overflow: hidden !important;
-    display : block;
     &.show {
-        overflow: auto !important;
-        width : 300px;
-        height : 360px;
-        transition : all 0.3s !important;  
         padding: 8px 0 !important;
-        display : block;
     }
 `;
 
