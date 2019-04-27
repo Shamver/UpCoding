@@ -11,6 +11,22 @@ spring:
     view:
       prefix:     /jsp/
       suffix:     .jsp
+  # oauth2 setting
+  security:
+    oauth2:
+      client:
+        registration:
+          # facebook app info
+          facebook:
+            client-id: 653518488403585
+            client-secret: 1d38225adfc60eb7c761415df5ada18c
+          # google app info
+          google:
+            client-id: 608512517046-p3fde6e9o2nfvaucprg1efhlnfa248dl.apps.googleusercontent.com
+            client-secret: zhJsINj_YOWRPh5BoYrEa3Tl
+
+# used sns
+spring.social.auths: facebook,google
       
 server:
   port : 8080
