@@ -10,7 +10,9 @@ class Home extends React.Component {
     render() {
         return (
             <React.Fragment>
-                ㄴㅇㄴㅇㄴ
+                <rs.Container>
+                    asdfa
+                </rs.Container>
             </React.Fragment>
         );
     }

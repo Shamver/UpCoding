@@ -10,6 +10,7 @@ import Home from './home/Home.jsx';
 import Login from './auth/Login.jsx';
 import Error from './auth/Error.jsx';
 import Navbar from './navbar/Navbar.jsx';
+import LoginModal from './modal/LoginModal.jsx';
 
 import styled from 'styled-components';
 import * as rs from 'reactstrap';
@@ -78,7 +79,8 @@ class App extends React.Component {
     state = {
         selectedCollapse: '',
         selectedSidebar: '',
-        isToggleSidebar: false
+        isToggleSidebar: false,
+        isOpenLoginModal: false
     }
 
     onSelectCollapse = (data) => {
@@ -112,6 +114,16 @@ class App extends React.Component {
         })
     }
 
+    onToggleLoginModal = () => {
+        this.setState({
+            isOpenLoginModal: !this.state.isOpenLoginModal
+        })
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("업뎃됨");
+    }
+
     render() {
         let toggled = false;
         if(this.state.isToggleSidebar){
@@ -122,7 +134,12 @@ class App extends React.Component {
             <React.Fragment>
                 <Route
                     render={props => (<Header props={props} onToggleSidebar={this.onToggleSidebar}
-                                              isToggleSidebar={this.state.isToggleSidebar}/>)}
+                                              isToggleSidebar={this.state.isToggleSidebar}
+                                                onToggleLoginModal={this.onToggleLoginModal}/>)}
+                />
+                <Route
+                    render={props => (<LoginModal props={props} onToggleLoginModal={this.onToggleLoginModal}
+                                              isOpen={this.state.isOpenLoginModal}/>)}
                 />
 
                 <NavbarStyled

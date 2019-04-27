@@ -17,6 +17,7 @@ class Header extends React.Component {
             <React.Fragment>
                 <HeaderTop>
                     <rs.Button onClick={this.props.onToggleSidebar}>ㄱ</rs.Button>
+                    <rs.Button onClick={this.props.onToggleLoginModal}>로</rs.Button>
                 </HeaderTop>
             </React.Fragment>
         );
