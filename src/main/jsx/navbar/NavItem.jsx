@@ -5,11 +5,11 @@ import * as fa from '@fortawesome/free-solid-svg-icons';
 import * as rs from 'reactstrap';
 import styled from 'styled-components';
 import NavItemInner from './NavItemInner.jsx';
-import TextSpan from '../../resources/style/TextSpan.js';
-import SideItemCol from '../../resources/style/SideItemCol.js';
-import Collapse from '../../resources/style/Collapse.js';
-import ListGroup from '../../resources/style/ListGroup.js';
-import RightIconSpan from '../../resources/style/RightIconSpan.js';
+import TextSpan from '../../resources/style/navbar/TextSpan.js';
+import SideItemCol from '../../resources/style/navbar/SideItemCol.js';
+import Collapse from '../../resources/style/navbar/Collapse.js';
+import ListGroup from '../../resources/style/navbar/ListGroup.js';
+import RightIconSpan from '../../resources/style/navbar/RightIconSpan.js';
 
 const CollapseButton = styled(rs.Button)`
     width: 100%;

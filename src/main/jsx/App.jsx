@@ -1,15 +1,19 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import Header from './layout/Header.jsx';
-import Home from './home/Home.jsx';
+import Home from './content/home/Home.jsx';
 import Navbar from './navbar/Navbar.jsx';
 import LoginModal from './modal/LoginModal.jsx';
+import Board from "./content/board/Board.jsx";
+
 import styled from 'styled-components';
 import * as rs from 'reactstrap';
-import RightIconSpan from '../resources/style/RightIconSpan.js';
-import TextSpan from '../resources/style/TextSpan.js';
-import ListGroup from '../resources/style/ListGroup.js';
+import RightIconSpan from '../resources/style/navbar/RightIconSpan.js';
+import TextSpan from '../resources/style/navbar/TextSpan.js';
+import ListGroup from '../resources/style/navbar/ListGroup.js';
 import * as fa from '@fortawesome/free-solid-svg-icons';
+
 
 const NavbarStyled = styled.div`
     position: fixed !important;
@@ -52,7 +56,7 @@ const NavbarStyled = styled.div`
     background-color: #1a2942;
 `;
 
-const MainComponent = styled(rs.Container)`
+const MainComponent = styled.div`
     @media only screen and (max-width: 1200px) {
         padding-left: 15px !important;
     }
@@ -60,14 +64,17 @@ const MainComponent = styled(rs.Container)`
     @media only screen and (min-width: 1200px) {
         padding-left: ${props => props.toggled == "true" ? "70px" : "250px"} !important;
     }
-    padding-top: 80px;
-    padding-bottom: 10px;
     transition: all 0.3s;
 `;
 
+const MainWrapper = styled.div`
+    padding: 90px 15px 25px 15px;
+    font-family : 'Jeju Gothic', 'Roboto';
+`
+
 class App extends React.Component {
     state = {
-        selectedCollapse: '',
+        selectedCollapse: 'home',
         selectedSidebar: '',
         isToggleSidebar: false,
         isOpenLoginModal: false,
@@ -103,6 +110,11 @@ class App extends React.Component {
         if (name == undefined) {
             name = event.target.parentElement.getAttribute('name');
         }
+
+        if(name=='home'){
+            this.props.history.push("/");
+        }
+
         if(this.state.selectedCollapse === name){
             this.setState({
                 selectedCollapse: ''
@@ -115,15 +127,9 @@ class App extends React.Component {
     };
 
     onSelectSidebar = (data) => {
-        if(this.state.selectedSidebar === data.target.name){
-            this.setState({
-                selectedSidebar: ''
-            });
-        } else {
-            this.setState({
-                selectedSidebar: data.target.name
-            });
-        }
+        this.setState({
+            selectedSidebar: data.target.name
+        });
     };
 
     onToggleSidebar = () => {
@@ -285,9 +291,27 @@ class App extends React.Component {
                 <MainComponent
                     toggled={toggled.toString()}
                 >
-                    <Home
-                        onToggleSidebar={this.onToggleSidebar}
-                    />
+                    <MainWrapper>
+                        <Switch>
+                            {/* HOME */}
+                            <Route exact path="/"
+                                   render={({match, history, location}) =>
+                                       <Home match={match} history={history} location={location} title={"홈"} icon={fa.faHome} />}
+                            />
+
+                            {/* BOARD */}
+                            <Route exact path="/board/all"
+                                   render={({match, history, location}) =>
+                                       <Board match={match} history={history} location={location} title={"전체"} icon={fa.faGlobeAsia} />}
+                            />
+
+                            {/* */}
+                            <Route exact path="/board/qna"
+                                   render={({match, history, location}) =>
+                                       <Board match={match} history={history} location={location} title={"Q&A"} icon={fa.faQuestionCircle} />}
+                            />
+                        </Switch>
+                    </MainWrapper>
                 </MainComponent>
 
                 {/*<Route path={"/"} exact component={Home}/>*/}

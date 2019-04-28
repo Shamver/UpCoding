@@ -61,7 +61,6 @@ class NavItemInner extends React.Component {
 
         if(selectedSidebar == name){
             isOpen = true;
-            realTo = "/";
         } else {
             isOpen = false;
         }
