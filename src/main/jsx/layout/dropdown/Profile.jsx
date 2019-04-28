@@ -11,6 +11,7 @@ const DropdownMenuAni = styled(DropdownMenu)`
     height : 245px;
     box-shadow : 0 2px 5px rgba(0, 0, 0, 0.2);
     border : 0;
+    font-family : 'Jeju Gothic', 'Roboto';
     &.show {
         transition : all 0.5s;
     }
@@ -125,6 +126,7 @@ const MenuIcon = styled(FontAwesomeIcon)`
     width : 21px !important;
     height : 16px;
     position : relative;
+    vertical-align : text-bottom;
 `;
 
 const CustomInner = styled.div`
@@ -155,34 +157,34 @@ class Profile extends React.Component {
                         </ImgDiv>
                         <Info>
                             <Name>
-                                Tomas Murray
+                                배진영
                             </Name>
-                            <SubMessage>UI/UX Desinger</SubMessage>
+                            <SubMessage>Front-End 개발자</SubMessage>
                         </Info>
                     </DropDownItemHeader>
                     <DropDownItemCustom>
                         <CustomInner>
                             <MenuIcon icon={fa.faCog}/>
-                            &nbsp;&nbsp;Setting
+                            &nbsp;&nbsp;설정
                         </CustomInner>
                     </DropDownItemCustom>
                     <DropDownItemCustom>
                         <CustomInner>
                             <MenuIcon icon={fa.faUser}/>
-                            &nbsp;&nbsp;Profile
+                            &nbsp;&nbsp;프로필
                         </CustomInner>
                     </DropDownItemCustom>
                     <DropDownItemCustom>
                         <CustomInner>
                             <MenuIcon icon={fa.faEnvelope}/>
-                            &nbsp;&nbsp;Inbox
+                            &nbsp;&nbsp;메일
                             &nbsp;&nbsp;<BadgeA>2</BadgeA>
                         </CustomInner>
                     </DropDownItemCustom>
                     <DropDownItemCustom>
                         <CustomInner>
                             <MenuIcon icon={fa.faSignOutAlt}/>
-                            &nbsp;&nbsp;Logout
+                            &nbsp;&nbsp;로그아웃
                         </CustomInner>
                     </DropDownItemCustom>
                 </DropdownMenuAni>

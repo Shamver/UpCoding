@@ -108,6 +108,7 @@ const SearchBoxList = styled(List)`
     @media (max-width: 767px) {
         display : none;
     }
+    font-family : 'Jeju Gothic', 'Roboto';
 `;
 
 const SearchBox = styled.input`
@@ -162,7 +163,7 @@ class Header extends React.Component {
                 </CollapseButton>
                 <LeftNav>
                     <SearchBoxList>
-                        <SearchBox placeholder="Type to search..."/>
+                        <SearchBox placeholder="검색할 키워드를 입력해주세요.."/>
                         <SearchIcon icon={fa.faSearch} />
                     </SearchBoxList>
                     <List>

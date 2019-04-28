@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from './layout/Header.jsx';
-import Home from './home/Home.jsx';
+import Home from './content/home/Home.jsx';
 import Navbar from './navbar/Navbar.jsx';
 import LoginModal from './modal/LoginModal.jsx';
 import styled from 'styled-components';
 import * as rs from 'reactstrap';
-import RightIconSpan from '../resources/style/RightIconSpan.js';
-import TextSpan from '../resources/style/TextSpan.js';
-import ListGroup from '../resources/style/ListGroup.js';
+import RightIconSpan from '../resources/style/navbar/RightIconSpan.js';
+import TextSpan from '../resources/style/navbar/TextSpan.js';
+import ListGroup from '../resources/style/navbar/ListGroup.js';
 import * as fa from '@fortawesome/free-solid-svg-icons';
 
 const NavbarStyled = styled.div`
@@ -52,7 +52,7 @@ const NavbarStyled = styled.div`
     background-color: #1a2942;
 `;
 
-const MainComponent = styled(rs.Container)`
+const MainComponent = styled.div`
     @media only screen and (max-width: 1200px) {
         padding-left: 15px !important;
     }
@@ -60,9 +60,12 @@ const MainComponent = styled(rs.Container)`
     @media only screen and (min-width: 1200px) {
         padding-left: ${props => props.toggled == "true" ? "70px" : "250px"} !important;
     }
-    padding-top: 80px;
-    padding-bottom: 10px;
     transition: all 0.3s;
+`;
+
+const MainWrapper = styled.div`
+    padding: 90px 15px 25px 15px;
+    font-family : 'Jeju Gothic', 'Roboto';
 `;
 
 class App extends React.Component {
@@ -165,13 +168,13 @@ class App extends React.Component {
                         />
 
                     )}
-/*                    render={props => (<Header props={props}
-                                              isToggleSidebar={this.state.isToggleSidebar}
-                                                onToggleLoginModal={this.onToggleLoginModal}/>)}*/
+                    /*                    render={props => (<Header props={props}
+                                                                  isToggleSidebar={this.state.isToggleSidebar}
+                                                                    onToggleLoginModal={this.onToggleLoginModal}/>)}*/
                 />
                 <Route
                     render={props => (<LoginModal props={props} onToggleLoginModal={this.onToggleLoginModal}
-                                              isOpen={this.state.isOpenLoginModal}/>)}
+                                                  isOpen={this.state.isOpenLoginModal}/>)}
                 />
 
                 <NavbarStyled
@@ -180,8 +183,8 @@ class App extends React.Component {
                     <Navbar
                         menus={[
                             {
-                              "head": "게시판",
-                              "icon": fa.faClipboardList,
+                                "head": "게시판",
+                                "icon": fa.faClipboardList,
                                 "items": [
                                     {
                                         "name": "전체",
@@ -256,12 +259,12 @@ class App extends React.Component {
                                 ]
                             },
                             {
-                                "head": "이메일",
-                                "icon": fa.faEnvelope,
+                                "head": "설정",
+                                "icon": fa.faCog,
                                 "items": [
                                     {
-                                        "name": "이메일-1",
-                                        "to": "/email/1"
+                                        "name": "코드관리",
+                                        "to": "/setting/code"
                                     },
                                     {
                                         "name": "이메일-2",
@@ -285,15 +288,17 @@ class App extends React.Component {
                 <MainComponent
                     toggled={toggled.toString()}
                 >
-                    <Home
-                        onToggleSidebar={this.onToggleSidebar}
-                    />
+                    <MainWrapper>
+                        <Home
+                            onToggleSidebar={this.onToggleSidebar}
+                        />
+                    </MainWrapper>
                 </MainComponent>
 
                 {/*<Route path={"/"} exact component={Home}/>*/}
                 {/*<Route path={"/login"} component={Login}/>*/}
                 {/*<Switch>*/}
-                    {/*<Route path={"/errorpage/:errorMessage/:errorCode"} component={Error}/>*/}
+                {/*<Route path={"/errorpage/:errorMessage/:errorCode"} component={Error}/>*/}
                 {/*</Switch>*/}
             </React.Fragment>
         );

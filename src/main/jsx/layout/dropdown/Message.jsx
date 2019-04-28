@@ -14,6 +14,7 @@ const DropdownMenuAni = styled(DropdownMenu)`
     height : 324px;
     border : 0;
     box-shadow : 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family : 'Jeju Gothic', 'Roboto';
     &.show {
         transition : all 0.5s;
     }
@@ -172,7 +173,7 @@ class Message extends React.Component {
                 </DropdownToggleCustom>
                 <DropdownMenuAni right={true}>
                     <DropdownItemHeader>
-                        <Colorh6>Messages  <BadgeH5><BadgeA>745</BadgeA></BadgeH5> </Colorh6>
+                        <Colorh6>쪽지  <BadgeH5><BadgeA>745</BadgeA></BadgeH5> </Colorh6>
                     </DropdownItemHeader>
                     <DropDownItemCustom>
                         <ImgDiv className="media-img">
@@ -180,9 +181,9 @@ class Message extends React.Component {
                         </ImgDiv>
                         <Info>
                             <Name>
-                                Amanda Robertson
+                                명지전문대 대장 윤은식
                             </Name>
-                            <SubMessage>Dummy text of the printing and typesetting industry.</SubMessage>
+                            <SubMessage>배진영, 개새끼야 뭐하냐? 피방 고? 명지전문대 내가 흔든다.</SubMessage>
                         </Info>
                     </DropDownItemCustom>
                     <DropDownItemCustom>
@@ -191,9 +192,9 @@ class Message extends React.Component {
                         </ImgDiv>
                         <Info>
                             <Name>
-                                Danny Donovan
+                                홍남수
                             </Name>
-                            <SubMessage>It is a long established fact that a reader will</SubMessage>
+                            <SubMessage>맥주 고? 약술 고? 응암팟 고?</SubMessage>
                         </Info>
                     </DropDownItemCustom>
                     <DropDownItemCustom>
@@ -202,13 +203,13 @@ class Message extends React.Component {
                         </ImgDiv>
                         <Info>
                             <Name>
-                                Frank Handrics
+                                이수현
                             </Name>
-                            <SubMessage>You have 87 unread messages</SubMessage>
+                            <SubMessage>야동 품번추천좀. 야애니 추천좀ㅋㅋㅋㅋㅋ 개재밌더라</SubMessage>
                         </Info>
                     </DropDownItemCustom>
                     <DropDownItemCustom>
-                        <FooterMessage>View All</FooterMessage>
+                        <FooterMessage>모두 보기</FooterMessage>
                     </DropDownItemCustom>
                 </DropdownMenuAni>
             </DropdownInline>

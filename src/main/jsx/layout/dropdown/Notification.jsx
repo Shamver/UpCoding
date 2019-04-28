@@ -73,6 +73,7 @@ const DropdownItemHeader = styled(DropdownItem)`
     font-weight : 400;
     text-align : center;
     cursor : unset !important;
+    font-family : 'Jeju Gothic', 'Roboto';
     margin-bottom : 8px;
     
     &:active {
@@ -94,6 +95,7 @@ const Colorh6 = styled.div`
 
 const DropDownItemCustom = styled(DropdownItem)`
     padding : 10px 20px;
+
     &:active {
         background-color : unset;
     }
@@ -111,6 +113,7 @@ const Info = styled.div`
     min-height: 40px;
     height: auto;
     position: relative;
+    font-family : 'Jeju Gothic', 'Roboto';
 `;
 
 const ImgDiv = styled.div`
@@ -142,6 +145,7 @@ const FooterMessage = styled.span`
     text-align : center;
     line-height: 1.5;
     color: #8A8A8A
+    font-family : 'Jeju Gothic', 'Roboto';
 `;
 
 const MenuCircleBell = styled(MenuCircle)`
@@ -182,7 +186,7 @@ class Notification extends React.Component {
                 </DropdownToggleCustom>
                 <DropdownMenuAni right={true}>
                     <DropdownItemHeader>
-                        <Colorh6><MenuIcon icon={fa.faBell} />&nbsp;Notifications</Colorh6>
+                        <Colorh6><MenuIcon icon={fa.faBell} />&nbsp;알림</Colorh6>
                     </DropdownItemHeader>
                     <DropDownItemCustom>
                         <ImgDiv>
@@ -192,9 +196,9 @@ class Notification extends React.Component {
                         </ImgDiv>
                         <Info>
                             <Name>
-                                5 new messages
+                                5개의 새로운 쪽지
                             </Name>
-                            <SubMessage>4 min ago</SubMessage>
+                            <SubMessage>4분 전</SubMessage>
                         </Info>
                     </DropDownItemCustom>
                     <DropDownItemCustom>
@@ -205,9 +209,9 @@ class Notification extends React.Component {
                         </ImgDiv>
                         <Info>
                             <Name>
-                                4 new comments
+                                4개의 새로운 댓글
                             </Name>
-                            <SubMessage>12 min ago</SubMessage>
+                            <SubMessage>12분 전</SubMessage>
                         </Info>
                     </DropDownItemCustom>
                     <DropDownItemCustom>
@@ -218,9 +222,9 @@ class Notification extends React.Component {
                         </ImgDiv>
                         <Info>
                             <Name>
-                                3 Friend Requests
+                                3개의 새로운 친구 요청
                             </Name>
-                            <SubMessage>a day ago</SubMessage>
+                            <SubMessage>1일 전</SubMessage>
                         </Info>
                     </DropDownItemCustom>
                     <DropDownItemCustom>
@@ -231,13 +235,13 @@ class Notification extends React.Component {
                         </ImgDiv>
                         <Info>
                             <Name>
-                                2 new messages
+                                2개의 새로운 채팅
                             </Name>
-                            <SubMessage>12 min ago</SubMessage>
+                            <SubMessage>12분 전</SubMessage>
                         </Info>
                     </DropDownItemCustom>
                     <DropdownItemFooter>
-                        <FooterMessage>Check all notifications</FooterMessage>
+                        <FooterMessage>모든 알림 확인하기</FooterMessage>
                     </DropdownItemFooter>
                 </DropdownMenuAni>
             </DropdownInline>
