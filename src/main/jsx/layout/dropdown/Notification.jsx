@@ -39,7 +39,7 @@ const MenuCircle = styled.span`
 `;
 
 const MenuIcon = styled(FontAwesomeIcon)`
-    width : 19px !important;
+    width : 21px !important;
     height : 16px;
 `;
 

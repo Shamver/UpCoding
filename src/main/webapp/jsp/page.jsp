@@ -6,9 +6,11 @@
     <title>UpCoding</title>
     <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
     <style>
+        @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
         body {
-            font-family: 'Roboto', sans-serif !important;
+            font-family: 'Roboto',sans-serif;
         }
     </style>
     <title>${pageName}</title>

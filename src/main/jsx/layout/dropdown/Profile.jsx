@@ -122,7 +122,7 @@ const SubMessage = styled.span`
 `;
 
 const MenuIcon = styled(FontAwesomeIcon)`
-    width : 19px !important;
+    width : 21px !important;
     height : 16px;
     position : relative;
 `;

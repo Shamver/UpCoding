@@ -20,8 +20,8 @@ const NavBarMain = styled.div`
 `;
 
 const NavBody = styled(rs.Col)`
-    
-`
+    font-family : "Jeju Gothic", 'Roboto';
+`;
 
 const NavRow = styled(rs.Row)`
     margin: 0;

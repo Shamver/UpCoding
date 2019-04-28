@@ -20,7 +20,7 @@ const LogoWrapper = styled.b`
     text-align : center;
 `;
 
-const LogoText = styled.h2`
+const LogoText = styled.h3`
     color : #E22A6F;
     font-weight : bold;
     line-height : 60px;
@@ -68,10 +68,11 @@ const MenuCircle = styled.span`
         border-color: #e22a6f;
         color: #fff;
     }
+    
 `;
 
 const MenuIcon = styled(FontAwesomeIcon)`
-    width : 19px !important;
+    width : 21px !important;
     height : 16px;
     vertical-align : center;
 `;
@@ -107,12 +108,13 @@ const SearchBoxList = styled(List)`
     @media (max-width: 767px) {
         display : none;
     }
-`
+`;
 
 const SearchBox = styled.input`
     border: 1px solid #f1f1f1;
     box-shadow: none;
     outline: none;
+    -webkit-appearance: none;
     height: 40px;
     margin-top: 12px;
     padding: 5px 20px;
@@ -125,7 +127,11 @@ const SearchBox = styled.input`
     }
 `;
 
-
+const MenuIconCustom = styled(MenuIcon)`
+    @media only screen and (max-width: 1200px){
+        transform: rotate( 180deg );
+    }
+`;
 class Header extends React.Component {
 
     onToggleDropDownMessage = () => {
@@ -150,13 +156,13 @@ class Header extends React.Component {
                     <LogoText>UpCoding</LogoText>
                 </AllLogoWrapper>
                 <CollapseButton>
-                    <MenuCircle>
-                        <MenuIcon icon={fa.faArrowLeft} />
+                    <MenuCircle onClick={this.props.onToggleSidebar}>
+                        <MenuIconCustom icon={this.props.icon} />
                     </MenuCircle>
                 </CollapseButton>
                 <LeftNav>
                     <SearchBoxList>
-                        <SearchBox placeholder="Type to search..."></SearchBox>
+                        <SearchBox placeholder="Type to search..."/>
                         <SearchIcon icon={fa.faSearch} />
                     </SearchBoxList>
                     <List>

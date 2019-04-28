@@ -1,21 +1,15 @@
 import React from 'react';
-
 import { Route, Switch } from 'react-router-dom';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import * as fa from '@fortawesome/free-solid-svg-icons';
 import Header from './layout/Header.jsx';
 import Home from './home/Home.jsx';
-import Login from './auth/Login.jsx';
-import Error from './auth/Error.jsx';
 import Navbar from './navbar/Navbar.jsx';
 import LoginModal from './modal/LoginModal.jsx';
-
 import styled from 'styled-components';
 import * as rs from 'reactstrap';
-
 import RightIconSpan from '../resources/style/RightIconSpan.js';
 import TextSpan from '../resources/style/TextSpan.js';
 import ListGroup from '../resources/style/ListGroup.js';
+import * as fa from '@fortawesome/free-solid-svg-icons';
 
 const NavbarStyled = styled.div`
     position: fixed !important;
@@ -59,7 +53,6 @@ const NavbarStyled = styled.div`
 `;
 
 const MainComponent = styled(rs.Container)`
-
     @media only screen and (max-width: 1200px) {
         padding-left: 15px !important;
     }
@@ -74,6 +67,10 @@ const MainComponent = styled(rs.Container)`
 
 class App extends React.Component {
     state = {
+        selectedCollapse: '',
+        selectedSidebar: '',
+        isToggleSidebar: false,
+        isOpenLoginModal: false,
         dropDownToggle : {
             Message : false,
             Notification : false,
@@ -101,27 +98,24 @@ class App extends React.Component {
         })
     };
 
-    state = {
-        selectedCollapse: '',
-        selectedSidebar: '',
-        isToggleSidebar: false,
-        isOpenLoginModal: false
-    }
-
-    onSelectCollapse = (data) => {
-        if(this.state.selectedCollapse == data.target.name){
+    onSelectCollapse = (event) => {
+        let name = event.target.getAttribute('name');
+        if (name == undefined) {
+            name = event.target.parentElement.getAttribute('name');
+        }
+        if(this.state.selectedCollapse === name){
             this.setState({
                 selectedCollapse: ''
             });
         } else {
             this.setState({
-                selectedCollapse: data.target.name
+                selectedCollapse: name
             });
         }
-    }
+    };
 
     onSelectSidebar = (data) => {
-        if(this.state.selectedSidebar == data.target.name){
+        if(this.state.selectedSidebar === data.target.name){
             this.setState({
                 selectedSidebar: ''
             });
@@ -130,41 +124,48 @@ class App extends React.Component {
                 selectedSidebar: data.target.name
             });
         }
-    }
+    };
 
     onToggleSidebar = () => {
         this.setState({
             isToggleSidebar: !this.state.isToggleSidebar
         })
-    }
+    };
 
     onToggleLoginModal = () => {
         this.setState({
             isOpenLoginModal: !this.state.isOpenLoginModal
         })
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log("업뎃됨");
-    }
+    };
 
     render() {
         let toggled = false;
+        let icon = null;
         if(this.state.isToggleSidebar){
             toggled = true;
+        }
+
+        if(this.state.isToggleSidebar) {
+            icon = fa.faArrowRight;
+        } else {
+            icon = fa.faArrowLeft;
         }
 
         return (
             <React.Fragment>
                 <Route
-                    exact path="/"
+                    path="/"
                     render={({location, history}) => (
                         <Header onToggleDropDown={this.onToggleDropDown}
                                 messageToggle={this.state.dropDownToggle.Message}
                                 notiToggle={this.state.dropDownToggle.Notification}
-                                profileToggle={this.state.dropDownToggle.Profile}/>
+                                profileToggle={this.state.dropDownToggle.Profile}
+                                onToggleSidebar={this.onToggleSidebar}
+                                icon={icon}
+                        />
+
                     )}
-/*                    render={props => (<Header props={props} onToggleSidebar={this.onToggleSidebar}
+/*                    render={props => (<Header props={props}
                                               isToggleSidebar={this.state.isToggleSidebar}
                                                 onToggleLoginModal={this.onToggleLoginModal}/>)}*/
                 />

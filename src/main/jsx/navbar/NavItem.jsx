@@ -1,32 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import React from 'react';
-
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import * as fa from '@fortawesome/free-solid-svg-icons';
-
 import * as rs from 'reactstrap';
 import styled from 'styled-components';
-
 import NavItemInner from './NavItemInner.jsx';
-
-// sideItem
-
-// const SideItemCol = styled(rs.Col)`
-//     color: white;
-//     text-align: center;
-//     text-vertical: middle;
-//     padding: 0;
-//
-//     ${({xs}) => (xs ? "opacity: 0" : "opacity: 0")}
-//
-//     @media only screen and (min-width: 1200px) {
-//         transition: opacity 0.2s;
-//         transition-delay: 0.05s;
-//         opacity: 100;
-//     }
-// `;
+import TextSpan from '../../resources/style/TextSpan.js';
 import SideItemCol from '../../resources/style/SideItemCol.js';
+import Collapse from '../../resources/style/Collapse.js';
+import ListGroup from '../../resources/style/ListGroup.js';
+import RightIconSpan from '../../resources/style/RightIconSpan.js';
 
 const CollapseButton = styled(rs.Button)`
     width: 100%;
@@ -59,18 +42,7 @@ const CollapseButton = styled(rs.Button)`
             cursor: not-allowed !important;
         }
     }
-    
-    
-    
 `;
-
-// const TextSpan = styled.span`
-//     visibility: ${props => props.toggled ? "hidden" : "visible" }
-//     opacity: ${props => props.toggled ? 0 : 100}
-//     transition: ${props => props.toggled ? "all 0.1s" : "all 0.3s"}
-//     transition-delay: ${props => props.toggled ? "0" : "0.1s"}
-// `
-import TextSpan from '../../resources/style/TextSpan.js';
 
 const LeftIconSpan = styled.span`
     display: inline-block;
@@ -84,30 +56,16 @@ const LeftIconSpan = styled.span`
     font-size: 18px;
     padding-right: ${props => props.toggled == "true" ? "2px" : "0"};
     margin-right: 14px;
-`
+`;
 
 const LeftIcon = styled(FontAwesomeIcon)`
     padding-top: 1px;
-`
+`;
 
-// const RightIconSpan = styled.span`
-//     height: 20px;
-//     width: 24px;
-//     line-height: 25px;
-//     position: absolute;
-//     right: 10px;
-//     font-size: 17px;
-//     visibility: ${props => props.toggled ? "hidden" : "visible"}
-//     opacity: ${props => props.toggled ? 0 : 100}
-//     transition: ${props => props.toggled ? "all 0.1s" : "all 0.3s"}
-//     transition-delay: ${props => props.toggled ? "0" : "0.1s"}
-//
-// `
-import RightIconSpan from '../../resources/style/RightIconSpan.js';
 
 const RightIcon = styled(FontAwesomeIcon)`
     transition: all 1s;
-    
+    vertical-align : text-bottom;
     transition: all 0.3s;
     
     ${CollapseButton}.active & {
@@ -117,26 +75,7 @@ const RightIcon = styled(FontAwesomeIcon)`
     -o-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     }
-`
-
-
-// const Collapse = styled(rs.Collapse)`
-//     margin: 0;
-//     visibility: ${props => props.toggled ? "hidden" : "visible" }
-//     opacity: ${props => props.toggled ? 0 : 100}
-//     transition: ${props => props.toggled ? "all 0.1s" : "all 0.3s"}
-//     transition-delay: ${props => props.toggled ? "0" : "0.1s"}
-// `;
-import Collapse from '../../resources/style/Collapse.js';
-
-// const ListGroup = styled(rs.ListGroup)`
-//     padding-left: 50px;
-//     text-align: left !important;
-//     background-color: #192532;
-//
-// `;
-import ListGroup from '../../resources/style/ListGroup.js';
-
+`;
 
 class NavItem extends React.Component {
 
@@ -155,7 +94,7 @@ class NavItem extends React.Component {
 
         let isOpen = null;
 
-        if(selectedCollapse == title){
+        if(selectedCollapse === title){
             isOpen = true;
         } else {
             isOpen = false;
@@ -180,12 +119,13 @@ class NavItem extends React.Component {
                 active={isOpen}
             >
                 <LeftIconSpan
+                    name={title}
                     toggled={isToggleSidebar.toString()}
                 >
-                    <LeftIcon icon={this.props.icon}/>
+                <LeftIcon icon={this.props.icon} name={title}/>
                 </LeftIconSpan>
-                    <TextSpan toggled={isToggleSidebar.toString()}>{title}</TextSpan>
-                    <RightIconSpan toggled={isToggleSidebar.toString()}><RightIcon icon={fa.faChevronRight}/></RightIconSpan>
+                    <TextSpan toggled={isToggleSidebar.toString()} name={title}>{title}</TextSpan>
+                    <RightIconSpan toggled={isToggleSidebar.toString()} name={title}><RightIcon icon={fa.faChevronRight} name={title}/></RightIconSpan>
             </CollapseButton>);
 
         return (

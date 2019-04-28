@@ -9,7 +9,7 @@ class Home extends React.Component {
         return (
             <React.Fragment>
                 <rs.Container>
-                    asdfa
+                    22
                 </rs.Container>
             </React.Fragment>
         );
