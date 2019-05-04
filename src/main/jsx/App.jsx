@@ -1,9 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import Header from './layout/Header.jsx';
-import Home from './content/home/Home.jsx';
+import Home from './content/code/Code.jsx';
+import Code from './content/home/Home.jsx';
 import Navbar from './navbar/Navbar.jsx';
 import LoginModal from './modal/LoginModal.jsx';
+
 import styled from 'styled-components';
 import * as rs from 'reactstrap';
 import RightIconSpan from '../resources/style/navbar/RightIconSpan.js';
@@ -66,7 +69,7 @@ const MainComponent = styled.div`
 const MainWrapper = styled.div`
     padding: 90px 15px 25px 15px;
     font-family : 'Jeju Gothic', 'Roboto';
-`;
+`
 
 class App extends React.Component {
     state = {
@@ -263,7 +266,7 @@ class App extends React.Component {
                                 "icon": fa.faCog,
                                 "items": [
                                     {
-                                        "name": "코드관리",
+                                        "name": "코드 관리",
                                         "to": "/setting/code"
                                     },
                                     {
@@ -288,10 +291,27 @@ class App extends React.Component {
                 <MainComponent
                     toggled={toggled.toString()}
                 >
+
+                    getCommonCode('DDDDD_DDDD',);
                     <MainWrapper>
-                        <Home
-                            onToggleSidebar={this.onToggleSidebar}
-                        />
+                        <Switch>
+                            {/* HOME */}
+                            <Route exact path="/setting/code"
+                                   render={({match, history, location}) =>
+                                       <Code match={match} history={history} location={location} title={"코드 관리"} icon={fa.faHome} />}
+                            />
+                            {/* BOARD */}
+{/*                            <Route exact path="/board/all"
+                                   render={({match, history, location}) =>
+                                       <Board match={match} history={history} location={location} title={"전체"} icon={fa.faGlobeAsia} />}
+                            />*/}
+
+                            {/* */}
+{/*                            <Route exact path="/board/qna"
+                                   render={({match, history, location}) =>
+                                       <Board match={match} history={history} location={location} title={"Q&A"} icon={fa.faQuestionCircle} />}
+                            />*/}
+                        </Switch>
                     </MainWrapper>
                 </MainComponent>
 
