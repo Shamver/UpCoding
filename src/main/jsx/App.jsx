@@ -7,6 +7,8 @@ import Navbar from './navbar/Navbar.jsx';
 import LoginModal from './modal/LoginModal.jsx';
 import Board from "./content/board/Board.jsx";
 
+import NavbarContainer from './containers/NavbarContainer.jsx'; // Navbar컨테이너 불러오기
+
 import styled from 'styled-components';
 import * as rs from 'reactstrap';
 import RightIconSpan from '../resources/style/navbar/RightIconSpan.js';
@@ -105,27 +107,6 @@ class App extends React.Component {
         })
     };
 
-    onSelectCollapse = (event) => {
-        let name = event.target.getAttribute('name');
-        if (name == undefined) {
-            name = event.target.parentElement.getAttribute('name');
-        }
-
-        if(name=='home'){
-            this.props.history.push("/");
-        }
-
-        if(this.state.selectedCollapse === name){
-            this.setState({
-                selectedCollapse: ''
-            });
-        } else {
-            this.setState({
-                selectedCollapse: name
-            });
-        }
-    };
-
     onSelectSidebar = (data) => {
         this.setState({
             selectedSidebar: data.target.name
@@ -180,114 +161,21 @@ class App extends React.Component {
                                                   isOpen={this.state.isOpenLoginModal}/>)}
                 />
 
-                <NavbarStyled
-                    toggled={toggled.toString()}
-                >
-                    <Navbar
-                        menus={[
-                            {
-                                "head": "게시판",
-                                "icon": fa.faClipboardList,
-                                "items": [
-                                    {
-                                        "name": "전체",
-                                        "to": "/board/all"
-                                    },
-                                    {
-                                        "name": "자유",
-                                        "to": "/board/free"
-                                    },
-                                    {
-                                        "name": "코딩",
-                                        "to": "/board/coding"
-                                    },
-                                    {
-                                        "name": "Q&A",
-                                        "to": "/board/qna"
-                                    },
-                                ]
-                            },
-                            {
-                                "head": "데이터",
-                                "icon": fa.faDatabase,
-                                "items": [
-                                    {
-                                        "name": "데이터-1",
-                                        "to": "/data/1"
-                                    },
-                                    {
-                                        "name": "데이터-2",
-                                        "to": "/data/2"
-                                    }
-                                ]
-                            },
-                            {
-                                "head": "장비",
-                                "icon": fa.faToolbox,
-                                "items": [
-                                    {
-                                        "name": "장비-1",
-                                        "to": "/device/1"
-                                    },
-                                    {
-                                        "name": "장비-2",
-                                        "to": "/device/2"
-                                    },
-                                    {
-                                        "name": "장비-3",
-                                        "to": "/device/3"
-                                    }
-                                ]
-                            },
-                            {
-                                "head": "일정",
-                                "icon": fa.faCalendarAlt,
-                                "items": [
-                                    {
-                                        "name": "일정-1",
-                                        "to": "/plan/1"
-                                    },
-                                    {
-                                        "name": "일정-2",
-                                        "to": "/plan/2"
-                                    },
-                                    {
-                                        "name": "일정-3",
-                                        "to": "/plan/3"
-                                    },
-                                    {
-                                        "name": "일정-4",
-                                        "to": "/plan/4"
-                                    }
-                                ]
-                            },
-                            {
-                                "head": "설정",
-                                "icon": fa.faCog,
-                                "items": [
-                                    {
-                                        "name": "코드 관리",
-                                        "to": "/setting/code"
-                                    },
-                                    {
-                                        "name": "이메일-2",
-                                        "to": "/email/2"
-                                    },
-                                    {
-                                        "name": "이메일-3",
-                                        "to": "/email/3"
-                                    }
-                                ]
-                            }
-                        ]}
-                        selectedCollapse={this.state.selectedCollapse}
-                        selectedSidebar={this.state.selectedSidebar}
-                        onSelectCollapse={this.onSelectCollapse}
-                        onSelectSidebar={this.onSelectSidebar}
-                        onToggleSidebar={this.onToggleSidebar}
-                        isToggleSidebar={this.state.isToggleSidebar}
-                    />
-                </NavbarStyled>
+
+                <Route
+                    render={({history}) => (
+                        <NavbarStyled
+                            toggled={toggled.toString()}
+                        >
+                            <NavbarContainer history={history}/>
+                        </NavbarStyled>
+
+                    )}
+                    /*                    render={props => (<Header props={props}
+                                                                  isToggleSidebar={this.state.isToggleSidebar}
+                                                                    onToggleLoginModal={this.onToggleLoginModal}/>)}*/
+                />
+
                 <MainComponent
                     toggled={toggled.toString()}
                 >
