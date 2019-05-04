@@ -76,9 +76,6 @@ const MainWrapper = styled.div`
 
 class App extends React.Component {
     state = {
-        selectedCollapse: 'home',
-        selectedSidebar: '',
-        isToggleSidebar: false,
         isOpenLoginModal: false,
         dropDownToggle : {
             Message : false,
@@ -104,18 +101,6 @@ class App extends React.Component {
 
         this.setState({
             dropDownToggle : dropDownToggle
-        })
-    };
-
-    onSelectSidebar = (data) => {
-        this.setState({
-            selectedSidebar: data.target.name
-        });
-    };
-
-    onToggleSidebar = () => {
-        this.setState({
-            isToggleSidebar: !this.state.isToggleSidebar
         })
     };
 
