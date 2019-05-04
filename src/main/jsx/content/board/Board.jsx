@@ -18,17 +18,18 @@ const LeftIcon = styled(FontAwesomeIcon)`
     vertical-align: sub;
 `;
 
-class Home extends React.Component {
+class Board extends React.Component {
 
     render() {
         return (
             <React.Fragment>
                 <rs.Container fluid>
+
                     <h4>
                         <LeftIconSpan>
                             <LeftIcon icon={this.props.icon}/>
                         </LeftIconSpan>
-                        &nbsp;&nbsp;{this.props.title}</h4>
+                        &nbsp;&nbsp;{this.props.title} <TitleSpan>게시판</TitleSpan></h4>
                 </rs.Container>
             </React.Fragment>
         );
@@ -36,4 +37,4 @@ class Home extends React.Component {
 
 }
 
-export default Home;
+export default Board;
