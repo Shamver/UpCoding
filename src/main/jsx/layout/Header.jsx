@@ -6,6 +6,7 @@ import * as fa from '@fortawesome/free-solid-svg-icons';
 import Message from './dropdown/Message.jsx';
 import Notification from "./dropdown/Notification.jsx";
 import Profile from "./dropdown/Profile.jsx";
+import * as mu from "@material-ui/core"
 
 const LogoImage = styled.img`
     width : 40px;
@@ -45,6 +46,10 @@ const Section_Header = styled.div`
     height : 65px;
     border-bottom: 1px solid #E9EAEC;
     color : #8A8A8A;
+    
+    @media (max-width: 992px) {
+        margin : 0px 15px;
+    }
 `;
 
 const CollapseButton = styled.a`
@@ -53,22 +58,41 @@ const CollapseButton = styled.a`
     min-height: calc(65px - 3px);
 `;
 
-const MenuCircle = styled.span`
-    border : 1px solid #F1F1F1;
-    border-radius : 50%;
-    height : 30px;
-    vertical-align : middle;
-    padding : 8px;
-    transition : all 0.3s;
-    cursor : pointer;
+const MenuButtonCircle = styled(mu.Button)`
+    min-width : 0px !important;
+    padding : 8px !important;
+    color : inherit !important;
+    height : 39px;
+    width : 39px;
+    border-radius : 50% !Important;
+    outline : 0 !important;
+    background-color : #f7f7f7 !important;
     
-    &:hover {
-        text-decoration: none;
-        background: #e22a6f;
-        border-color: #e22a6f;
-        color: #fff;
+     &:hover {
+        text-decoration: none !Important;
+        background: #e22a6f !Important;
+        border-color: #e22a6f !Important;
+        color: #fff !Important;
     }
+`;
+
+const MenuButtonCircle2 = styled(mu.ListItem)`
+    background-color : #f7f7f7 !important;
+    height : 39px;
+    width : 39px !important;
+    color : inherit !important;
+    border-radius : 50% !Important;
+    display : inline-block !important;
+    padding : 8px !important;
+    text-align : center !important;
+    font-family : inherit;
     
+     &:hover {
+        text-decoration: none !Important;
+        background: #e22a6f !Important;
+        border-color: #e22a6f !Important;
+        color: #fff !Important;
+    }
 `;
 
 const MenuIcon = styled(FontAwesomeIcon)`
@@ -157,9 +181,14 @@ class Header extends React.Component {
                     <LogoText>UpCoding</LogoText>
                 </AllLogoWrapper>
                 <CollapseButton>
-                    <MenuCircle onClick={this.props.onToggleSidebar}>
+                    <MenuButtonCircle button onClick={this.props.onToggleSidebar}>
                         <MenuIconCustom icon={this.props.icon} />
-                    </MenuCircle>
+                    </MenuButtonCircle>
+                </CollapseButton>
+                <CollapseButton>
+                    <MenuButtonCircle2 button onClick={this.props.onToggleSidebar}>
+                        <span>안</span>
+                    </MenuButtonCircle2>
                 </CollapseButton>
                 <LeftNav>
                     <SearchBoxList>

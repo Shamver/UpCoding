@@ -2,13 +2,10 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from './layout/Header.jsx';
 import Home from './content/home/Home.jsx';
-import Code from './content/code/Code.jsx';
 import Navbar from './navbar/Navbar.jsx';
 import LoginModal from './modal/LoginModal.jsx';
 import Board from "./content/board/Board.jsx";
-
 import styled from 'styled-components';
-import * as rs from 'reactstrap';
 import RightIconSpan from '../resources/style/navbar/RightIconSpan.js';
 import TextSpan from '../resources/style/navbar/TextSpan.js';
 import ListGroup from '../resources/style/navbar/ListGroup.js';
@@ -22,12 +19,12 @@ const NavbarStyled = styled.div`
     transition: width 0.3s;
     
     @media only screen and (max-width: 1199px) {
-        width: ${props => props.toggled == "true" ? "250px" : "0px"};
-        overflow: ${props => props.toggled == "true" ? "auto" : "hidden"};
+        width: ${props => props.toggled === "true" ? "250px" : "0px"};
+        overflow: ${props => props.toggled === "true" ? "auto" : "hidden"};
     }
     
     @media only screen and (min-width: 1200px) {
-        width: ${props => props.toggled == "true" ? "64px" : "250px"};
+        width: ${props => props.toggled === "true" ? "64px" : "250px"};
         &:hover {
             width: 250px;
         }
@@ -62,7 +59,7 @@ const MainComponent = styled.div`
     }
     
     @media only screen and (min-width: 1200px) {
-        padding-left: ${props => props.toggled == "true" ? "70px" : "250px"} !important;
+        padding-left: ${props => props.toggled === "true" ? "70px" : "250px"} !important;
     }
     transition: all 0.3s;
 `;
@@ -70,7 +67,7 @@ const MainComponent = styled.div`
 const MainWrapper = styled.div`
     padding: 90px 15px 25px 15px;
     font-family : 'Jeju Gothic', 'Roboto';
-`
+`;
 
 class App extends React.Component {
     state = {
@@ -111,7 +108,7 @@ class App extends React.Component {
             name = event.target.parentElement.getAttribute('name');
         }
 
-        if(name=='home'){
+        if(name ==='home'){
             this.props.history.push("/");
         }
 
@@ -310,7 +307,6 @@ class App extends React.Component {
                                    render={({match, history, location}) =>
                                        <Board match={match} history={history} location={location} title={"Q&A"} icon={fa.faQuestionCircle} />}
                             />
-
                         </Switch>
                     </MainWrapper>
                 </MainComponent>

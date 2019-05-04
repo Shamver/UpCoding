@@ -2,10 +2,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React from 'react';
 import * as rs from 'reactstrap';
+import * as mu from '@material-ui/core';
 import styled from 'styled-components';
 
 import NavItem from './NavItem.jsx';
-import {Link} from "react-router-dom";
 import * as fa from "@fortawesome/free-solid-svg-icons/index";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index";
 
@@ -69,25 +69,26 @@ const RightIcon = styled(FontAwesomeIcon)`
     }
 `;
 
-const CollapseButton = styled(rs.Button)`
-    width: 100%;
-    height: 47px;
-    padding: 10px 15px;
-    position: relative;
-    margin: 0;
-    background-color: #1a2942;
-    color: white;
-    border: none;
-    border-radius: 0;
-    outline: none;
-    box-shadow: none;
-    font-size: 17px;
+const CollapseButton = styled(mu.Button)`
+    width: 100% !important;
+    height: 47px !important;
+    padding: 10px 15px !important;
+    position: relative !important;
+    margin: 0 !important;
+    background-color: #1a2942 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    font-size: 17px !important;
     text-align: left !important;
+    display : block !important;
+    font-family : inherit !important;
     
     &.active {
         background-color: #e22a6f !important;
         color: white !important;
-        
     }
     
     &:hover {

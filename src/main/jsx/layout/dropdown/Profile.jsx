@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import * as fa from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import avatar from "../../../webapp/img/avatar.jpg";
+import * as mu from "@material-ui/core";
 
 const DropdownMenuAni = styled(DropdownMenu)`
     margin-top : 13px;
@@ -53,10 +54,23 @@ const Img = styled.img`
 `;
 
 const ProfileImg = styled.img`
-    width : 37px;
+    width : 39px;
     border-radius : 50%;
     cursor : pointer;
 `;
+
+const MenuButtonCircle = styled(mu.Button)`
+    min-width : 0px !important;
+    padding : 0px !important;
+    color : inherit !important;
+    height : 39px;
+    width : 39px;
+    border-radius : 50% !Important;
+    outline : 0 !important;
+    background-color : #f7f7f7 !important;
+
+`;
+
 
 const DropDownItemHeader = styled(DropdownItem)`
     padding : 8px 26px;
@@ -89,7 +103,6 @@ const DropDownItemCustom = styled(DropdownItem)`
     &:hover {
     }
 `;
-
 
 const ImgDiv = styled.div`
     position: relative;
@@ -148,7 +161,9 @@ class Profile extends React.Component {
         return (
             <DropdownInline isOpen={this.props.toggleYN} toggle={this.props.toggle}>
                 <DropdownToggleCustom>
-                    <ProfileImg src={avatar}/>
+                    <MenuButtonCircle variant="contained">
+                        <ProfileImg src={avatar}/>
+                    </MenuButtonCircle>
                 </DropdownToggleCustom>
                 <DropdownMenuAni right={true}>
                     <DropDownItemHeader>

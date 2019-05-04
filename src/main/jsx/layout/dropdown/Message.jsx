@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import avatar from '../../../webapp/img/avatar-1.jpg'
 import avatar2 from '../../../webapp/img/avatar-2.jpg'
 import avatar3 from '../../../webapp/img/avatar-3.jpg'
+import * as mu from "@material-ui/core";
 
 
 const DropdownMenuAni = styled(DropdownMenu)`
@@ -20,21 +21,21 @@ const DropdownMenuAni = styled(DropdownMenu)`
     }
 `;
 
-const MenuCircle = styled.span`
-    border : 1px solid #F1F1F1;
-    border-radius : 50%;
-    height : 30px;
-    vertical-align : middle;
-    padding : 8px;
-    transition : all 0.3s;
-    cursor : pointer;
-    line-height : 2.5;
+const MenuButtonCircle = styled(mu.Button)`
+    min-width : 0px !important;
+    padding : 8px !important;
+    color : inherit !important;
+    height : 39px;
+    width : 39px;
+    border-radius : 50% !Important;
+    outline : 0 !important;
+    background-color : #f7f7f7 !important;
     
-    &:hover {
-        text-decoration: none;
-        background: #e22a6f;
-        border-color: #e22a6f;
-        color: #fff;
+     &:hover {
+        text-decoration: none !Important;
+        background: #e22a6f !Important;
+        border-color: #e22a6f !Important;
+        color: #fff !Important;
     }
 `;
 
@@ -167,9 +168,9 @@ class Message extends React.Component {
         return (
             <DropdownInline isOpen={this.props.toggleYN} toggle={this.props.toggle}>
                 <DropdownToggleCustom>
-                    <MenuCircle>
+                    <MenuButtonCircle variant="contained">
                         <MenuIcon icon={fa.faEnvelope} />
-                    </MenuCircle>
+                    </MenuButtonCircle>
                 </DropdownToggleCustom>
                 <DropdownMenuAni right={true}>
                     <DropdownItemHeader>
