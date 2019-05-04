@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../../webapp/img/shamver_upcoding.png';
+import logo_text from '../../webapp/img/LOGO.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as fa from '@fortawesome/free-solid-svg-icons';
 import Message from './dropdown/Message.jsx';
@@ -13,12 +14,22 @@ const LogoImage = styled.img`
     cursor : pointer;
 `;
 
+const LogoTextImage = styled.img`
+    height : 40px;
+    cursor : pointer;
+`;
+
 const LogoWrapper = styled.b`
     width : 60px;
     height : 60px;
     line-height : 60px;
     display : inline-block;
     text-align : center;
+`;
+
+const LogoTextWrapper = styled(LogoWrapper)`
+    width : 250px;
+    text-align : left;
 `;
 
 const LogoText = styled.h3`
@@ -58,25 +69,7 @@ const CollapseButton = styled.a`
     min-height: calc(65px - 3px);
 `;
 
-const MenuButtonCircle = styled(mu.Button)`
-    min-width : 0px !important;
-    padding : 8px !important;
-    color : inherit !important;
-    height : 39px;
-    width : 39px;
-    border-radius : 50% !Important;
-    outline : 0 !important;
-    background-color : #f7f7f7 !important;
-    
-     &:hover {
-        text-decoration: none !Important;
-        background: #e22a6f !Important;
-        border-color: #e22a6f !Important;
-        color: #fff !Important;
-    }
-`;
-
-const MenuButtonCircle2 = styled(mu.ListItem)`
+const MenuButtonCircle = styled(mu.ListItem)`
     background-color : #f7f7f7 !important;
     height : 39px;
     width : 39px !important;
@@ -157,6 +150,12 @@ const MenuIconCustom = styled(MenuIcon)`
         transform: rotate( 180deg );
     }
 `;
+
+const MenuIconCustomWrapper = styled.div`
+    line-height : 22px !important;
+    display : block;
+`;
+
 class Header extends React.Component {
 
     onToggleDropDownMessage = () => {
@@ -178,17 +177,17 @@ class Header extends React.Component {
                     <LogoWrapper>
                         <LogoImage src={logo}/>
                     </LogoWrapper>
-                    <LogoText>UpCoding</LogoText>
+                    <LogoTextWrapper>
+                        <LogoTextImage src={logo_text}/>
+                    </LogoTextWrapper>
+
                 </AllLogoWrapper>
                 <CollapseButton>
                     <MenuButtonCircle button onClick={this.props.onToggleSidebar}>
-                        <MenuIconCustom icon={this.props.icon} />
+                        <MenuIconCustomWrapper>
+                            <MenuIconCustom icon={this.props.icon} />
+                        </MenuIconCustomWrapper>
                     </MenuButtonCircle>
-                </CollapseButton>
-                <CollapseButton>
-                    <MenuButtonCircle2 button onClick={this.props.onToggleSidebar}>
-                        <span>안</span>
-                    </MenuButtonCircle2>
                 </CollapseButton>
                 <LeftNav>
                     <SearchBoxList>

@@ -37,6 +37,7 @@ import ListGroup from '../../resources/style/navbar/ListGroup.js';
 import RightIconSpan from '../../resources/style/navbar/RightIconSpan.js';
 
 const LeftIconSpan = styled.span`
+    vertical-align : sub;
     display: inline-block;
     height: 20px;
     width: ${props => props.toggled == "true" ? "35px" : "24px"};
@@ -51,7 +52,8 @@ const LeftIconSpan = styled.span`
 `;
 
 const LeftIcon = styled(FontAwesomeIcon)`
-    padding-top: 1px;
+    line-height : 30px;
+    vertical-align : unset;
 `;
 
 
@@ -69,7 +71,7 @@ const RightIcon = styled(FontAwesomeIcon)`
     }
 `;
 
-const CollapseButton = styled(mu.Button)`
+const CollapseButton = styled(mu.ListItem)`
     width: 100% !important;
     height: 47px !important;
     padding: 10px 15px !important;
@@ -85,6 +87,7 @@ const CollapseButton = styled(mu.Button)`
     text-align: left !important;
     display : block !important;
     font-family : inherit !important;
+    line-height : 30px;
     
     &.active {
         background-color: #e22a6f !important;
@@ -137,12 +140,10 @@ class Navbar extends React.Component {
                         <NavBody xs="12">
                             <rs.Row>
                                 <SideItemCol toggled={isToggleSidebar.toString()} xs={12}>
-                                    <CollapseButton
+                                    <CollapseButton button
+                                        className={isOpen ? "active" : ""}
                                         name={"home"}
                                         onClick={this.props.onSelectCollapse}
-                                        style={{outline: 'none', boxShadow: 'none'}}
-                                        disabled={false}
-                                        active={isOpen}
                                     >
                                         <LeftIconSpan
                                             name={"home"}

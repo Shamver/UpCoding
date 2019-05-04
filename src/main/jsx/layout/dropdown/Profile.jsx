@@ -59,16 +59,17 @@ const ProfileImg = styled.img`
     cursor : pointer;
 `;
 
-const MenuButtonCircle = styled(mu.Button)`
-    min-width : 0px !important;
-    padding : 0px !important;
-    color : inherit !important;
-    height : 39px;
-    width : 39px;
-    border-radius : 50% !Important;
-    outline : 0 !important;
+const MenuButtonCircle = styled(mu.ListItem)`
     background-color : #f7f7f7 !important;
-
+    height : 39px;
+    width : 39px !important;
+    color : inherit !important;
+    border-radius : 50% !Important;
+    display : inline-block !important;
+    padding : 0px !important;
+    text-align : center !important;
+    font-family : inherit;
+    
 `;
 
 
@@ -161,7 +162,7 @@ class Profile extends React.Component {
         return (
             <DropdownInline isOpen={this.props.toggleYN} toggle={this.props.toggle}>
                 <DropdownToggleCustom>
-                    <MenuButtonCircle variant="contained">
+                    <MenuButtonCircle button>
                         <ProfileImg src={avatar}/>
                     </MenuButtonCircle>
                 </DropdownToggleCustom>

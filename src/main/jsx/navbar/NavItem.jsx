@@ -29,7 +29,10 @@ const CollapseButton = styled(rs.Button)`
     &.active {
         background-color: #e22a6f !important;
         color: white !important;
-        
+    }
+    
+    &:focus {
+        box-shadow : 0;
     }
     
     &:hover {

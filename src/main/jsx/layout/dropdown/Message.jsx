@@ -21,15 +21,16 @@ const DropdownMenuAni = styled(DropdownMenu)`
     }
 `;
 
-const MenuButtonCircle = styled(mu.Button)`
-    min-width : 0px !important;
-    padding : 8px !important;
-    color : inherit !important;
-    height : 39px;
-    width : 39px;
-    border-radius : 50% !Important;
-    outline : 0 !important;
+const MenuButtonCircle = styled(mu.ListItem)`
     background-color : #f7f7f7 !important;
+    height : 39px;
+    width : 39px !important;
+    color : inherit !important;
+    border-radius : 50% !Important;
+    display : inline-block !important;
+    padding : 8px !important;
+    text-align : center !important;
+    font-family : inherit;
     
      &:hover {
         text-decoration: none !Important;
@@ -162,14 +163,21 @@ const Img = styled.img`
     color: #ffffff;
 `;
 
+const MenuIconCustomWrapper = styled.div`
+    line-height : 22px !important;
+    display : block;
+`;
+
 class Message extends React.Component {
 
     render() {
         return (
             <DropdownInline isOpen={this.props.toggleYN} toggle={this.props.toggle}>
                 <DropdownToggleCustom>
-                    <MenuButtonCircle variant="contained">
-                        <MenuIcon icon={fa.faEnvelope} />
+                    <MenuButtonCircle button onClick={this.props.onToggleSidebar}>
+                        <MenuIconCustomWrapper>
+                            <MenuIcon icon={fa.faEnvelope} />
+                        </MenuIconCustomWrapper>
                     </MenuButtonCircle>
                 </DropdownToggleCustom>
                 <DropdownMenuAni right={true}>

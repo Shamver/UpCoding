@@ -73,7 +73,6 @@ class NavItemInner extends React.Component {
                     toggled={this.props.isToggleSidebar.toString()}
                     tag={"button"}
                     active={isOpen}
-                    style={{outline: 'none', boxShadow: 'none'}}
                 ><ListLink to={realTo} name={name} onClick={this.props.onSelectSidebar}>{name}</ListLink></ListGroupItem>
             </React.Fragment>
         );
