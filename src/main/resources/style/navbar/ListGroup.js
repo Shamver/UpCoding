@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import * as rs from "reactstrap";
 
 export const ListGroup = styled(rs.ListGroup)`
-    padding-left: 50px;
     text-align: left !important;
     background-color: #192532;
+    
     
     @media only screen and (max-width: 1200px){
         max-height: ${props => props.toggled == "false" ? 0 : "none"}

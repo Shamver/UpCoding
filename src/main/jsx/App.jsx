@@ -14,6 +14,7 @@ import * as fa from '@fortawesome/free-solid-svg-icons';
 
 const NavbarStyled = styled.div`
     position: fixed !important;
+    z-index : 1000;
     left: 0 !important;
     top : 65px !important;
     transition: width 0.3s;
@@ -55,7 +56,6 @@ const NavbarStyled = styled.div`
 
 const MainComponent = styled.div`
     @media only screen and (max-width: 1200px) {
-        padding-left: 15px !important;
     }
     
     @media only screen and (min-width: 1200px) {
@@ -67,6 +67,8 @@ const MainComponent = styled.div`
 const MainWrapper = styled.div`
     padding: 90px 15px 25px 15px;
     font-family : 'Jeju Gothic', 'Roboto';
+    background-color : rgb(241, 242, 247);
+    height : 100vh;
 `;
 
 class App extends React.Component {

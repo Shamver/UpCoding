@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import * as rs from 'reactstrap';
 import styled from 'styled-components';
 
+import * as mu from '@material-ui/core';
+
 // NavItemInner
 
 const ListGroupItem = styled(rs.ListGroupItem)`
@@ -33,15 +35,17 @@ const ListGroupItem = styled(rs.ListGroupItem)`
 
 const ListLink = styled(Link)`
     color: #99abb4 !important;
-    padding: 10px 15px;
     font-size: 16px;
     text-decoration: none !important;
     outline: none;
     box-shadow: none;
     display: block !important;
+    padding-left : 65px; 
     height: 100% !important;
     transition: all 0.3s;
-    ${ListGroupItem}.active & {
+    line-height : 42px;
+    width : 100%;
+    ${ListItem}.active & {
         color: white !important;
         background: none !important;
     }
@@ -49,7 +53,12 @@ const ListLink = styled(Link)`
         color: white !important;
         text-decoration: none !important;
     }
-`
+`;
+
+const ListItem = styled(mu.ListItem)`
+    padding : 0px 0px !important;
+    height : 42px;
+`;
 
 class NavItemInner extends React.Component {
 
@@ -69,11 +78,18 @@ class NavItemInner extends React.Component {
 
         return (
             <React.Fragment>
-                <ListGroupItem
+{/*                <ListGroupItem
                     toggled={this.props.isToggleSidebar.toString()}
                     tag={"button"}
                     active={isOpen}
-                ><ListLink to={realTo} name={name} onClick={this.props.onSelectSidebar}>{name}</ListLink></ListGroupItem>
+                ><ListLink to={realTo} name={name} onClick={this.props.onSelectSidebar}>{name}</ListLink></ListGroupItem>*/}
+                <ListItem button
+                          toggled={this.props.isToggleSidebar.toString()}
+                          tag={"button"}
+                          className={isOpen ? "active" : ""}
+                >
+                    <ListLink to={realTo} name={name} onClick={this.props.onSelectSidebar}>{name}</ListLink>
+                </ListItem>
             </React.Fragment>
         );
     }

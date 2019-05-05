@@ -3,6 +3,7 @@ import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import * as fa from '@fortawesome/free-solid-svg-icons';
 import * as rs from 'reactstrap';
+import * as mu from '@material-ui/core';
 import styled from 'styled-components';
 import NavItemInner from './NavItemInner.jsx';
 import TextSpan from '../../resources/style/navbar/TextSpan.js';
@@ -11,20 +12,22 @@ import Collapse from '../../resources/style/navbar/Collapse.js';
 import ListGroup from '../../resources/style/navbar/ListGroup.js';
 import RightIconSpan from '../../resources/style/navbar/RightIconSpan.js';
 
-const CollapseButton = styled(rs.Button)`
-    width: 100%;
-    height: 47px;
-    padding: 10px 15px;
-    position: relative;
-    margin: 0;
-    background-color: #1a2942;
-    color: white;
-    border: none;
-    border-radius: 0;
-    outline: none;
-    box-shadow: none;
-    font-size: 17px;
+const CollapseButton = styled(mu.ListItem)`
+    width: 100% !important;
+    height: 47px !important;
+    padding: 11px 15px !important;
+    padding-bottom : 10px !important;
+    position: relative !important;
+    margin: 0 !important;
+    background-color: #1a2942 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    font-size: 17px !important;
     text-align: left !important;
+    display : inline-block !important;
     
     &.active {
         background-color: #e22a6f !important;
@@ -63,14 +66,16 @@ const LeftIconSpan = styled.span`
 
 const LeftIcon = styled(FontAwesomeIcon)`
     vertical-align : sub;
-    padding-bottom : 1px;
 `;
 
 
 const RightIcon = styled(FontAwesomeIcon)`
     transition: all 1s;
-    vertical-align : text-bottom;
     transition: all 0.3s;
+    line-height: 25px;
+    height : 20px;
+    margin-top: 3px;
+
     
     ${CollapseButton}.active & {
         transform: rotate(90deg);
@@ -115,22 +120,22 @@ class NavItem extends React.Component {
         });
 
         let CollapseButtonRtn = (
-            <CollapseButton
-                name={title}
-                onClick={this.props.onSelectCollapse}
-                style={{outline: 'none', boxShadow: 'none'}}
-                disabled={false}
-                active={isOpen}
+            <CollapseButton button
+                  name={title}
+                  onClick={this.props.onSelectCollapse}
+                  disabled={false}
+                  className={isOpen ? "active" : ""}
             >
                 <LeftIconSpan
                     name={title}
                     toggled={isToggleSidebar.toString()}
                 >
-                <LeftIcon icon={this.props.icon} name={title}/>
+                    <LeftIcon icon={this.props.icon} name={title}/>
                 </LeftIconSpan>
-                    <TextSpan toggled={isToggleSidebar.toString()} name={title}>{title}</TextSpan>
-                    <RightIconSpan toggled={isToggleSidebar.toString()} name={title}><RightIcon icon={fa.faChevronRight} name={title}/></RightIconSpan>
-            </CollapseButton>);
+                <TextSpan toggled={isToggleSidebar.toString()} name={title}>{title}</TextSpan>
+                <RightIconSpan toggled={isToggleSidebar.toString()} name={title}><RightIcon icon={fa.faChevronRight} name={title}/></RightIconSpan>
+            </CollapseButton>
+        );
 
         return (
             <React.Fragment>

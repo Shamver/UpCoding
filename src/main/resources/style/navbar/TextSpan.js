@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const TextSpan = styled.span`
-
     @media only screen and (max-width: 1200px){
         visibility: ${props => props.toggled == "true" ? "visible" : "hidden"}
         opacity: ${props => props.toggled == "true" ? 100 : 0}

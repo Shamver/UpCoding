@@ -59,7 +59,7 @@ const Section_Header = styled.div`
     color : #8A8A8A;
     
     @media (max-width: 992px) {
-        margin : 0px 15px;
+        padding : 0px 15px;
     }
 `;
 
@@ -112,6 +112,9 @@ const LeftNav = styled.ul`
     list-style: none;
     padding-left: 0;
     margin-bottom: 0px;
+    @media only screen and (max-width: 1200px){
+       margin : 0px;
+    }
 `;
 
 const List = styled.li`
