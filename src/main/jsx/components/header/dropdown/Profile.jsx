@@ -3,7 +3,7 @@ import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Badge} from 'react
 import styled from 'styled-components';
 import * as fa from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import avatar from "../../../webapp/img/avatar.jpg";
+import avatar from "../../../../webapp/img/avatar.jpg";
 
 const DropdownMenuAni = styled(DropdownMenu)`
     margin-top : 13px;

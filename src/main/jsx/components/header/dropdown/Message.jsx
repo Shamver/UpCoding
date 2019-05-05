@@ -1,22 +1,22 @@
 import React from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Badge } from 'reactstrap';
 import styled from 'styled-components';
 import * as fa from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import avatar from "../../../webapp/img/avatar-1.jpg";
-import avatar2 from "../../../webapp/img/avatar-2.jpg";
-import avatar3 from "../../../webapp/img/avatar-3.jpg";
+import avatar from '../../../../webapp/img/avatar-1.jpg'
+import avatar2 from '../../../../webapp/img/avatar-2.jpg'
+import avatar3 from '../../../../webapp/img/avatar-3.jpg'
+
 
 const DropdownMenuAni = styled(DropdownMenu)`
     margin-top : 10px;
-    position : absolute;
-    border : 0;
     width : 300px;
-    height : 360px;
-    transition : all 0.3s !important;
+    height : 324px;
+    border : 0;
     box-shadow : 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-family : 'Jeju Gothic', 'Roboto';
     &.show {
-        padding: 8px 0 !important;
+        transition : all 0.5s;
     }
 `;
 
@@ -41,9 +41,10 @@ const MenuCircle = styled.span`
 const MenuIcon = styled(FontAwesomeIcon)`
     width : 21px !important;
     height : 16px;
+    vertical-align : center;
 `;
 
-const DropdownInline = styled(Dropdown)`
+const DropdownInline =styled(Dropdown)`
     display : inline;
 `;
 
@@ -68,24 +69,16 @@ const DropdownToggleCustom  = styled(DropdownToggle)`
     }
 `;
 
-const DropdownItemHeader = styled(DropdownItem)`
-    padding : 10px 20px;
-    font-weight : 400;
-    text-align : center;
-    cursor : unset !important;
-    font-family : 'Jeju Gothic', 'Roboto';
-    margin-bottom : 8px;
-    
-    &:active {
-        background-color : unset;
-    }
-    
-    &:focus {
-        outline : unset;
-    }
+const BadgeH5 = styled.h5`
+    display : inline;
+    float : right;
 `;
 
-
+const BadgeA = styled(Badge)`
+    padding : 5px 10px;
+    font-size : 12px;
+    background-color: #03A9F4 !important;
+`;
 
 const Colorh6 = styled.div`
     line-height : 1.5;
@@ -93,33 +86,30 @@ const Colorh6 = styled.div`
     font-size : 17px !important;
 `;
 
-const DropDownItemCustom = styled(DropdownItem)`
+const DropdownItemHeader = styled(DropdownItem)`
     padding : 10px 20px;
-
+    font-weight : 400;
+    cursor : unset !important;
+    
     &:active {
         background-color : unset;
     }
+    
     &:focus {
         outline : unset;
     }
 `;
 
-const DropdownItemFooter = styled(DropDownItemCustom)`
-    margin-top : 10px;
-`;
-
-const Info = styled.div`
-    padding-left: 55px;
-    min-height: 40px;
-    height: auto;
-    position: relative;
-    font-family : 'Jeju Gothic', 'Roboto';
-`;
-
-const ImgDiv = styled.div`
-    position: relative;
-    float: left;
-    line-height: 1.5;
+const DropDownItemCustom = styled(DropdownItem)`
+    padding : 10px 20px;
+    
+    &:active {
+        background-color : unset;
+    }
+    
+    &:focus {
+        outline : unset;
+    }
 `;
 
 const Name = styled.span`
@@ -145,108 +135,86 @@ const FooterMessage = styled.span`
     text-align : center;
     line-height: 1.5;
     color: #8A8A8A
-    font-family : 'Jeju Gothic', 'Roboto';
+
 `;
 
-const MenuCircleBell = styled(MenuCircle)`
-    background-color: #e22a6f !important;
-    border : 0;
-    color : white;
+const Info = styled.div`
+    padding-left: 55px;
+    min-height: 40px;
+    height: auto;
+    position: relative;
 `;
 
-const MenuCircleComment = styled(MenuCircle)`
-    background-color: #24d5d8 !important;
-    border : 0;
-    color : white;
+const ImgDiv = styled.div`
+    position: relative;
+    float: left;
+    line-height: 1.5;
 `;
 
-const MenuCircleFriend = styled(MenuCircle)`
-    background-color: #00E676 !important;
-    border : 0;
-    color : white;
+const Img = styled.img`
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    font-size: 17px;
+    border-radius: 50px;
+    color: #ffffff;
 `;
 
-const MenuCircleMessage = styled(MenuCircle)`
-    background-color: #ab8ce4 !important;
-    border : 0;
-    color : white;
-`;
-
-
-
-class Notification extends React.Component {
+class Message extends React.Component {
 
     render() {
         return (
             <DropdownInline isOpen={this.props.toggleYN} toggle={this.props.toggle}>
-                <DropdownToggleCustom >
+                <DropdownToggleCustom>
                     <MenuCircle>
-                        <MenuIcon icon={fa.faBell} />
+                        <MenuIcon icon={fa.faEnvelope} />
                     </MenuCircle>
                 </DropdownToggleCustom>
                 <DropdownMenuAni right={true}>
                     <DropdownItemHeader>
-                        <Colorh6><MenuIcon icon={fa.faBell} />&nbsp;알림</Colorh6>
+                        <Colorh6>쪽지  <BadgeH5><BadgeA>745</BadgeA></BadgeH5> </Colorh6>
                     </DropdownItemHeader>
                     <DropDownItemCustom>
-                        <ImgDiv>
-                            <MenuCircleBell>
-                                <MenuIcon icon={fa.faEnvelope} />
-                            </MenuCircleBell>
+                        <ImgDiv className="media-img">
+                            <Img src={avatar} alt=""/>
                         </ImgDiv>
                         <Info>
                             <Name>
-                                5개의 새로운 쪽지
+                                명지전문대 대장 윤은식
                             </Name>
-                            <SubMessage>4분 전</SubMessage>
+                            <SubMessage>배진영, 개새끼야 뭐하냐? 피방 고? 명지전문대 내가 흔든다.</SubMessage>
                         </Info>
                     </DropDownItemCustom>
                     <DropDownItemCustom>
                         <ImgDiv className="media-img">
-                            <MenuCircleComment>
-                                <MenuIcon icon={fa.faCommentAlt} />
-                            </MenuCircleComment>
+                            <Img src={avatar2} alt=""/>
                         </ImgDiv>
                         <Info>
                             <Name>
-                                4개의 새로운 댓글
+                                홍남수
                             </Name>
-                            <SubMessage>12분 전</SubMessage>
+                            <SubMessage>맥주 고? 약술 고? 응암팟 고?</SubMessage>
                         </Info>
                     </DropDownItemCustom>
                     <DropDownItemCustom>
                         <ImgDiv className="media-img">
-                            <MenuCircleFriend>
-                                <MenuIcon icon={fa.faUserFriends} />
-                            </MenuCircleFriend>
+                            <Img src={avatar3} alt=""/>
                         </ImgDiv>
                         <Info>
                             <Name>
-                                3개의 새로운 친구 요청
+                                이수현
                             </Name>
-                            <SubMessage>1일 전</SubMessage>
+                            <SubMessage>야동 품번추천좀. 야애니 추천좀ㅋㅋㅋㅋㅋ 개재밌더라</SubMessage>
                         </Info>
                     </DropDownItemCustom>
                     <DropDownItemCustom>
-                        <ImgDiv className="media-img">
-                            <MenuCircleMessage>
-                                <MenuIcon icon={fa.faComment} />
-                            </MenuCircleMessage>
-                        </ImgDiv>
-                        <Info>
-                            <Name>
-                                2개의 새로운 채팅
-                            </Name>
-                            <SubMessage>12분 전</SubMessage>
-                        </Info>
+                        <FooterMessage>모두 보기</FooterMessage>
                     </DropDownItemCustom>
-                    <DropdownItemFooter>
-                        <FooterMessage>모든 알림 확인하기</FooterMessage>
-                    </DropdownItemFooter>
                 </DropdownMenuAni>
             </DropdownInline>
         );
     }
 }
 
-export default Notification;
+export default Message;

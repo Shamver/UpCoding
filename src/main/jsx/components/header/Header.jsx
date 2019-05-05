@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../../webapp/img/shamver_upcoding.png';
+import logo from '../../../webapp/img/shamver_upcoding.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import * as fa from '@fortawesome/free-solid-svg-icons';
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import Message from './dropdown/Message.jsx';
 import Notification from "./dropdown/Notification.jsx";
 import Profile from "./dropdown/Profile.jsx";
@@ -135,19 +135,9 @@ const MenuIconCustom = styled(MenuIcon)`
 `;
 class Header extends React.Component {
 
-    onToggleDropDownMessage = () => {
-        this.props.onToggleDropDown('Message');
-    };
-
-    onToggleDropDownNoti = () => {
-        this.props.onToggleDropDown('Notification');
-    };
-
-    onToggleDropDownProfile = () => {
-        this.props.onToggleDropDown('Profile');
-    };
-
     render() {
+        const { icon, toggleMessage, toggleNotification, toggleProfile, toggleNavbar, toggleMessageYN, toggleNotificationYN, toggleProfileYN } = this.props;
+
         return (
             <Section_Header>
                 <AllLogoWrapper>
@@ -157,28 +147,28 @@ class Header extends React.Component {
                     <LogoText>UpCoding</LogoText>
                 </AllLogoWrapper>
                 <CollapseButton>
-                    <MenuCircle onClick={this.props.onToggleSidebar}>
-                        <MenuIconCustom icon={this.props.icon} />
+                    <MenuCircle onClick={toggleNavbar}>
+                        <MenuIconCustom icon={icon} />
                     </MenuCircle>
                 </CollapseButton>
                 <LeftNav>
                     <SearchBoxList>
                         <SearchBox placeholder="검색할 키워드를 입력해주세요.."/>
-                        <SearchIcon icon={fa.faSearch} />
+                        <SearchIcon icon={faSearch} />
                     </SearchBoxList>
                     <List>
                         <CollapseButton>
-                            <Message toggle={this.onToggleDropDownMessage} toggleYN={this.props.messageToggle}/>
+                            <Message toggle={toggleMessage} toggleYN={toggleMessageYN}/>
                         </CollapseButton>
                     </List>
                     <List>
                         <CollapseButton>
-                            <Notification toggle={this.onToggleDropDownNoti} toggleYN={this.props.notiToggle}/>
+                            <Notification toggle={toggleNotification} toggleYN={toggleNotificationYN}/>
                         </CollapseButton>
                     </List>
                     <List>
                         <CollapseButton>
-                            <Profile toggle={this.onToggleDropDownProfile} toggleYN={this.props.profileToggle}/>
+                            <Profile toggle={toggleProfile} toggleYN={toggleProfileYN}/>
                         </CollapseButton>
                     </List>
                 </LeftNav>

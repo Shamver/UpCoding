@@ -13,7 +13,7 @@ export const toggleNavbar = () => ({ type: TOGGLE_NAVBAR });
 
 // **** 초기상태 정의
 const initialState = {
-    selectedSidebar: 'Home',
+    selectedSidebar: 'home',
     selectedSidebarItem: '',
     toggledNavbar: false,
     menus: [

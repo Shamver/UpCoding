@@ -95,7 +95,7 @@ class NavbarItem extends React.Component {
 
         let isOpen = null;
 
-        if(selectedSidebar === title){
+        if(selectedSidebar == title){
             isOpen = true;
         } else {
             isOpen = false;

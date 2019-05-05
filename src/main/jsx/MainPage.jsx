@@ -25,7 +25,7 @@ class MainPage extends React.Component {
     render() {
         console.log(store.getState());
         return (
-			<BrowserRouter history={history}>
+			<BrowserRouter>
                 <Route render={({history}) => <App history={history}/>}/>
 			</BrowserRouter>
         );

@@ -13,7 +13,6 @@ const initialState = {
     message: false,
     notification: false,
     profile: false,
-
 };
 
 // **** 리듀서 작성

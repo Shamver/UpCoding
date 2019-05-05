@@ -11,6 +11,47 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome/index";
 
 // Navbar
 
+const NavbarStyled = styled.div`
+    position: fixed !important;
+    left: 0 !important;
+    top : 65px !important;
+    transition: width 0.3s;
+    
+    @media only screen and (max-width: 1199px) {
+        width: ${props => props.toggled == "true" ? "250px" : "0px"};
+        overflow: ${props => props.toggled == "true" ? "auto" : "hidden"};
+    }
+    
+    @media only screen and (min-width: 1200px) {
+        width: ${props => props.toggled == "true" ? "64px" : "250px"};
+        &:hover {
+            width: 250px;
+        }
+        &:hover ${RightIconSpan} {
+            visibility: visible;
+            opacity: 100;
+            transition: all 0.1s;
+            transition-delay: 0.1s;
+        }
+        &:hover ${TextSpan} {
+            visibility: visible;
+            opacity: 100;
+            transition: all 0.1s;
+            transition-delay: 0.1s;
+        }
+        &:hover ${ListGroup} {
+            visibility: visible;
+            opacity: 100;
+            max-height: none;
+            transition: visibility opacity max-height 0.2s;
+            transition-delay: 0.1s;
+        }
+    }
+    
+    height: 100%;
+    background-color: #1a2942;
+`;
+
 const NavBarMain = styled.div`
     height: 100%;
     width: 100%;
@@ -31,6 +72,8 @@ const NavRow = styled(rs.Row)`
 
 import TextSpan from '../../../resources/style/navbar/TextSpan.js';
 import SideItemCol from '../../../resources/style/navbar/SideItemCol.js';
+import ListGroup from "../../../resources/style/navbar/ListGroup";
+import RightIconSpan from "../../../resources/style/navbar/RightIconSpan";
 
 const LeftIconSpan = styled.span`
     display: inline-block;
@@ -102,7 +145,7 @@ class Navbar extends React.Component {
 
     render() {
         const {menus, onSelectSidebar, onSelectSidebarItem, selectedSidebar, selectedSidebarItem, toggledNavbar } = this.props;
-        console.log(selectedSidebarItem);
+
         const items = menus.map((data, i) => {
             return (<NavbarItem
                 title={data.head}
@@ -118,7 +161,8 @@ class Navbar extends React.Component {
 
         let isOpen = null;
 
-        if(selectedSidebar === "home"){
+        console.log(selectedSidebar);
+        if(selectedSidebar == "home"){
             isOpen = true;
         } else {
             isOpen = false;
@@ -126,32 +170,37 @@ class Navbar extends React.Component {
 
         return (
             <React.Fragment>
-                <div>
-                    <NavRow>
-                        <NavBody xs="12">
-                            <rs.Row>
-                                <SideItemCol toggled={toggledNavbar.toString()} xs={12}>
-                                    <CollapseButton
-                                        name={"home"}
-                                        onClick={onSelectSidebar}
-                                        style={{outline: 'none', boxShadow: 'none'}}
-                                        disabled={false}
-                                        active={isOpen}
-                                    >
-                                        <LeftIconSpan
+                <NavbarStyled
+                    toggled={toggledNavbar.toString()}
+                >
+                    <div>
+                        <NavRow>
+                            <NavBody xs="12">
+                                <rs.Row>
+                                    <SideItemCol toggled={toggledNavbar.toString()} xs={12}>
+                                        <CollapseButton
                                             name={"home"}
-                                            toggled={toggledNavbar.toString()}
+                                            onClick={onSelectSidebar}
+                                            style={{outline: 'none', boxShadow: 'none'}}
+                                            disabled={false}
+                                            active={isOpen}
                                         >
-                                            <LeftIcon icon={fa.faHome} name={"home"}/>
-                                        </LeftIconSpan>
-                                        <TextSpan toggled={toggledNavbar.toString()} name={"home"}>홈</TextSpan>
-                                    </CollapseButton>
-                                </SideItemCol>
-                                {items}
-                            </rs.Row>
-                        </NavBody>
-                    </NavRow>
-                </div>
+                                            <LeftIconSpan
+                                                name={"home"}
+                                                toggled={toggledNavbar.toString()}
+                                            >
+                                                <LeftIcon icon={fa.faHome} name={"home"}/>
+                                            </LeftIconSpan>
+                                            <TextSpan toggled={toggledNavbar.toString()} name={"home"}>홈</TextSpan>
+                                        </CollapseButton>
+                                    </SideItemCol>
+                                    {items}
+                                </rs.Row>
+                            </NavBody>
+                        </NavRow>
+                    </div>
+                </NavbarStyled>
+
             </React.Fragment>
         );
     }
