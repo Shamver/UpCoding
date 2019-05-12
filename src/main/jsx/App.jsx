@@ -5,6 +5,7 @@ import Home from './content/home/Home.jsx';
 import Navbar from './navbar/Navbar.jsx';
 import LoginModal from './modal/LoginModal.jsx';
 import Board from "./content/board/Board.jsx";
+import Code from "./content/code/Code.jsx";
 import styled from 'styled-components';
 import RightIconSpan from '../resources/style/navbar/RightIconSpan.js';
 import TextSpan from '../resources/style/navbar/TextSpan.js';
@@ -68,7 +69,8 @@ const MainWrapper = styled.div`
     padding: 90px 15px 25px 15px;
     font-family : 'Jeju Gothic', 'Roboto';
     background-color : rgb(241, 242, 247);
-    height : 100vh;
+    min-height : 100vh;
+    height : 100%;
 `;
 
 class App extends React.Component {
@@ -308,6 +310,11 @@ class App extends React.Component {
                             <Route exact path="/board/qna"
                                    render={({match, history, location}) =>
                                        <Board match={match} history={history} location={location} title={"Q&A"} icon={fa.faQuestionCircle} />}
+                            />
+                            {/* Code */}
+                            <Route exact path="/setting/code"
+                                   render={({match, history, location}) =>
+                                       <Code match={match} history={history} location={location} title={"코드 관리"} icon={fa.faCode} />}
                             />
                         </Switch>
                     </MainWrapper>

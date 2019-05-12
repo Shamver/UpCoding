@@ -13,7 +13,7 @@ class MainPage extends React.Component {
     render() {
         return (
 			<BrowserRouter history={history}>
-                <Route render={({history}) => <App history={history}/>}/>
+                <Route path="/" render={({history}) => <App history={history}/>}/>
 			</BrowserRouter>
         );
     }

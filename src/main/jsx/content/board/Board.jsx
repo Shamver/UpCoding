@@ -24,7 +24,6 @@ class Board extends React.Component {
         return (
             <React.Fragment>
                 <rs.Container fluid>
-
                     <h4>
                         <LeftIconSpan>
                             <LeftIcon icon={this.props.icon}/>

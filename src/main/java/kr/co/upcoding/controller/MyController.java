@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 public class MyController {
 
     // main.bundle.js 로 매핑할 경로 for SPA
-    @GetMapping(value = {"/","/login","/signup","/errorpage/*","/errorpage/*/*","/test"})
+    @GetMapping(value = {"/","/setting/code","/login","/signup","/errorpage/*","/errorpage/*/*","/test"})
     public String main(Model model, HttpServletRequest req) {
         model.addAttribute("pageName", "main");
         return "page";

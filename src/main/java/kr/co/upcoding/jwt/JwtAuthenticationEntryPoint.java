@@ -18,7 +18,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, org.springframework.security.core.AuthenticationException e) throws IOException, ServletException {
-        logger.error("Responding with unauthorized error. Message - {}", e.getMessage());
+/*        logger.error("Responding with unauthorized error. Message - {}", e.getMessage());
         if(httpServletRequest.getHeader("login") != null && httpServletRequest.getHeader("login").equals("true") && e.getMessage().equals("Bad credentials")){
             PrintWriter out = httpServletResponse.getWriter();
             httpServletResponse.setContentType("application/json");
@@ -30,6 +30,6 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
         } else if(httpServletRequest.getMethod().equals("GET")){
             String redirectUrl = "/loginmodal/"+e.getMessage().toString()+"/"+HttpServletResponse.SC_UNAUTHORIZED;
             httpServletResponse.sendRedirect(redirectUrl);
-        }
+        }*/
     }
 }

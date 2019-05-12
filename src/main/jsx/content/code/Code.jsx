@@ -3,7 +3,8 @@ import React from 'react';
 import * as rs from 'reactstrap';
 import styled from 'styled-components';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import * as fa from '@fortawesome/free-solid-svg-icons';
+
+import CodeGroup from './CodeGroup.jsx';
 
 const TitleSpan = styled.span`
     font-size: 0.9rem;
@@ -18,22 +19,28 @@ const LeftIcon = styled(FontAwesomeIcon)`
     vertical-align: sub;
 `;
 
-class Code extends React.Component {
+const H4 = styled.h4`
+    margin-bottom : 20px;
+`;
 
+
+
+class Code extends React.Component {
     render() {
         return (
             <React.Fragment>
                 <rs.Container fluid>
-                    <h4>
+                    <H4>
                         <LeftIconSpan>
-                            <LeftIcon icon={fa.faGlobeAsia}/>
+                            <LeftIcon icon={this.props.icon}/>
                         </LeftIconSpan>
-                        &nbsp;&nbsp;전체 <TitleSpan>게시판</TitleSpan></h4>
+                        &nbsp;&nbsp;{this.props.title} <TitleSpan>설정</TitleSpan>
+                    </H4>
+                    <CodeGroup/><CodeGroup/>
                 </rs.Container>
             </React.Fragment>
         );
     }
-
 }
 
 export default Code;
